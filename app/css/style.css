@@ -1,0 +1,262 @@
+html {
+  height: 100%;
+  box-sizing: border-box;
+}
+
+body {
+background-color: rgb(55, 161, 248);
+}
+
+.mainContainer {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.logo {
+  display: flex;
+  justify-content: center;
+}
+
+.result-header {
+  display: flex;
+  justify-content: center;
+}
+
+.percents {
+  display: flex;
+  flex-direction: column;
+}
+
+.item {
+  display: flex;
+  justify-content: center;
+}
+
+.item img {
+  margin-left: 50px;
+}
+
+.result-content {
+  display: flex;
+  justify-content: center;
+}
+
+.header {
+  display: flex;
+  justify-content: center;
+}
+
+.login {
+  display: flex;
+  justify-content: center;
+}
+
+.underhead {
+  display: flex;
+  justify-content: center;
+  margin-top: -45px;
+  font-family: 'Roboto', sans-serif;
+  color: white;
+}
+
+#underLogo {
+font-family: 'PT Sans', sans-serif;
+  font-weight: 100;
+  font-size: 25px;
+  margin-top: -20px;
+}
+
+h1 {
+font-family: 'PT Sans', sans-serif;
+font-weight: 100;
+}
+
+h2, b, h4 {
+font-family: 'PT Sans', sans-serif;
+font-weight: 100;
+}
+
+p {
+font-family: 'PT Sans', sans-serif;
+font-weight: 100;
+}
+
+.input {
+  display: flex;
+  justify-content: center;
+}
+
+canvas {
+  display: block;
+  vertical-align: bottom;
+}
+
+#particles-js {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgb(55, 161, 248);
+}
+
+.uploadButton{
+  display: flex;
+  justify-content: center;
+  background-color:#44c767;
+  -moz-border-radius:28px;
+  -webkit-border-radius:28px;
+  border-radius:28px;
+  border:1px solid #18ab29;
+  display:inline-block;
+  cursor:pointer;
+  color:#ffffff;
+  font-family:Arial;
+  font-size:17px;
+  padding:16px 31px;
+  text-decoration:none;
+  text-shadow:0px 1px 0px #2f6627;
+}
+
+.loginButton {
+  display: flex;
+  justify-content: center;
+  background-color:#44c767;
+  -moz-border-radius:28px;
+  -webkit-border-radius:28px;
+  border-radius:28px;
+  border:1px solid #18ab29;
+  display:inline-block;
+  cursor:pointer;
+  color:#ffffff;
+  font-family:Arial;
+  font-size:17px;
+  padding:16px 31px;
+  text-decoration:none;
+  text-shadow:0px 1px 0px #2f6627;
+}
+
+.uploadButton:hover {
+  background-color:#5cbf2a;
+}
+
+.loginButton:hover {
+  background-color:#5cbf2a;
+}
+
+.uploadButton:active {
+  position:relative;
+  top:1px;
+}
+
+.loginButton:active {
+  position:relative;
+  top:1px;
+}
+
+#logo {
+  color: white;
+  font-size: 90px;
+}
+
+@media (max-width: 500px) {
+  #logo {
+    font-size: 65px;
+  }
+  #underLogo {
+    margin-top: 1px;
+    font-size: 15px;
+  }
+}
+
+.card-content img{
+  width:70%;
+  border-radius:50%;
+  animation:small .4s;
+}
+
+@keyframes small {
+  from{
+    transform:scale(1.2)
+  }
+  to{
+    transform:scale(1)
+  }
+}
+
+.card{
+  text-align:center;
+  position:relative;
+  width:200px;
+  margin:30px;
+  cursor:pointer;
+}
+
+.card:hover .card-content{
+  transform:translateY(-20px) rotate(1deg);
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+.card-content{ 
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  height:250px;
+  transition:.5s;
+  transform:none;
+  padding:10px;
+  border-radius:10px;
+  background:white;
+  margin-bottom: 5px;
+}
+
+.card-footer{
+  border-bottom-left-radius:5px;
+  border-bottom-right-radius:5px;
+  padding:0 20px;
+  left:-20px;
+  width:100%;
+  height:70px;
+  background:#1976d2;
+  position:absolute;
+  margin:auto;
+  bottom:-10px;
+  text-align:center;
+  color:white;
+  margin-bottom: 15px;
+}
+
+.card-footer p{
+   padding-top:10px;
+}
+
+.card-footer:before{
+  content:'';
+  width:50px;
+  height:100%;
+  transform:rotate(50deg);
+  position:absolute;
+  background:#002171
+
+;
+  display:inline-block;
+  left: 18px;
+  top: -39px;
+  z-index:-1;
+}
+
+.card-footer:after{
+  content:'';
+  width:50px;
+  height:100%;
+  transform:rotate(-50deg);
+  position:absolute;
+  background:#002171;
+  display:inline-block;
+  right: 18px;
+  top: -39px;
+  z-index:-1  
+}
+
+.footer {
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+}
