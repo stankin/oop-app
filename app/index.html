@@ -4,15 +4,17 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Визуализатор диаграмм IDEF0 из JSON</title>
+  <title>Визуализатор диаграмм из JSON</title>
   <link href="/css/style.css" type="text/css" rel="stylesheet" media="screen,projection" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
-  <script>
-    particlesJS.load('particles-js', 'p.json', function () {
-      console.log('callback - particles.js config loaded');
-    });
+  <script type="text/javascript">
+    mxBasePath = 'mxgraph';
   </script>
+  <script type="text/javascript" src="js/mxClient.js"></script>
+  <script type="text/javascript" src="js/loader.js"></script>
+  <script type="text/javascript" src="js/validator.js"></script>
+  <script type="text/javascript" src="js/visualizer.js"></script>
   <script src="https://vk.com/js/api/openapi.js?160" type="text/javascript"></script>
   <!-- Yandex.Metrika counter -->
   <script type="text/javascript">
@@ -107,10 +109,10 @@
   <div id="particles-js"></div>
   <div class="mainContainer">
     <div class="header">
-      <h1 id="logo">JSON TO IDEF0</h1>
+      <h1 id="logo">JSON TO IDEF0 UseCase</h1>
     </div>
     <div class="underhead">
-      <h4 id="underLogo">Визуализатор диаграмм IDEF0 из JSON</h4>
+      <h4 id="underLogo">Визуализатор диаграмм IDEF0 и UML Use Case из JSON</h4>
     </div>
     <div class="input">
       <form class="uploadForm">
@@ -121,12 +123,13 @@
     </div>
     <!-- Да, это говнокод, но и я не верстальщик -->
     <div class="header" id="preview"
-      style="display: flex;justify-content: center;flex-direction: column;align-items: center; display: none;">
-      <h4 style="color:white;"></h4>
+      style="display: flex;justify-content: center;flex-direction: column;align-items: center; display: none;width:100%;height:100%">
+      <h4 id="title" style="color:white;"></h4>
       <!-- Контейнер для превью картинки -->
-      <div class="img-container" style="width:300px">
+      <div class="img-container" style="margin:0px auto;">
         <!-- В нашем случае здесь будет или сгенерированная картинка для диаграммы или же блок с canvas -->
-        <img id="previewImage" src="" style="width: 100%; height: auto;">
+        <div id="graphContainer" style="overflow:hidden;width:800px;height:600px; background-color: white">
+          </div>
       </div>
     </div>
     <!-- Крутим лоадер -->
@@ -145,11 +148,15 @@
     </div>
     <!-- можно убрать -->
     <div class="footer">
-      <a target="_blank" href="https://vk.com/pr0n00gler" class="fa fa-vk"></a>
-      <a target="_blank" href="https://instagram.com/pr0n00gler" class="fa fa-instagram"></a>
-      <a target="_blank" href="https://github.com/programmer10110" class="fa fa-github"></a>
+
+      <a target="_blank" href="https://github.com/stankin/oop-app/wiki/Приложение-для-визуализации-IDEF0-и-Use-Case" class="fa fa-github"></a>
     </div>
   </div>
 </body>
-
+<script>
+    particlesJS.load('particles-js', 'p.json', function () {
+      console.log('callback - particles.js config loaded');
+    });
+    document.getElementById('file').addEventListener('change', showGraph, false);
+  </script>
 </html>
