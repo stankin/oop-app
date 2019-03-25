@@ -2,7 +2,7 @@
 Приложение визуализации моделей
 
 Состоит из программных модулей, выполняющих простые преобразования данных (JSON) в визуальные элементы (HTML, canvas), к примеру:
-* [json --> диаграмма IDEF0](https://github.com/stankin/oop-app/wiki/Приложение-для-визуализации-IDEF0-и-Use-Case)
+* [json --> диаграмма IDEF0 и Use Case](https://github.com/stankin/oop-app/wiki/Приложение-для-визуализации-IDEF0-и-Use-Case)
 * json --> диаграмма UML Class
 * ...
 
