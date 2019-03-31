@@ -3,21 +3,20 @@
  */
 
  /**
- * Функция: loadJson(event)
+ * Функция: loadJson(event).
  * 
  * Функция, которая загружает и читает содержимое выбранного файла,
- * а также осуществляет проверку и парсинг содержимого 
+ * а также осуществляет проверку и парсинг содержимого.
  * 
  * Параметры:
  * 
- * event - событие выбора файла
+ * file - объект, описывающий файл.
  * 
  * Вовзращаемый результат:
  * 
- * promise - объект, содержащий состояние асинхронной загрузки файла
+ * promise - объект, содержащий состояние асинхронной загрузки файла.
  */
-function loadJson(event) {
-    var file = event.target.files[0]
+function loadJson(file) {
     var reader = new FileReader()
     var promise = new Promise((resolve, reject) => {
         reader.onload = function(evt) {
