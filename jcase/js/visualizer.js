@@ -116,8 +116,8 @@ function drawFirstLevel(usecase) {
         var down = usecase.blocks[0].down
         var left = usecase.blocks[0].left
         var right = usecase.blocks[0].right
-        var step = 1 / (up.length + 1)
-        var position = step
+        var step = 1 / up.length
+        var position = step/2
         for(var i in up){
             var connection = up[i]
             var startPoint = graph.insertVertex(upConnector, null, '', position, 0, 0, 0, null, true);
@@ -126,8 +126,8 @@ function drawFirstLevel(usecase) {
                         'startArrow=dash;startSize=12;endArrow=block;align=right;labelBackgroundColor=#FFFFFF;');
             position = position + step
         }
-        step = 1 / (down.length + 1)
-        position = step
+        step = 1 / down.length
+        position = step/2
         for(var i in down){
             var connection = down[i]
             var startPoint = graph.insertVertex(downConnector, null, '', position, 0, 0, 0, null, true);
@@ -136,8 +136,8 @@ function drawFirstLevel(usecase) {
                         'startArrow=dash;startSize=12;endArrow=block;align=right;labelBackgroundColor=#FFFFFF;');
             position = position + step
         }
-        step = 1 / (left.length + 1)
-        position = step
+        step = 1 / left.length
+        position = step/2
         for(var i in left){
             var connection = left[i]
             var startPoint = graph.insertVertex(leftConnector, null, '', 0, position, 0, 0, null, true);
@@ -146,8 +146,8 @@ function drawFirstLevel(usecase) {
                         'startArrow=dash;startSize=12;endArrow=block;align=top;labelBackgroundColor=#FFFFFF;');
             position = position + step
         }
-        step = 1 / (right.length + 1)
-        position = step
+        step = 1 / right.length
+        position = step/2
         for(var i in right){
             var connection = right[i]
             var endPoint = graph.insertVertex(rightConnector, null, '', 1, position, 0, 0, null, true);
