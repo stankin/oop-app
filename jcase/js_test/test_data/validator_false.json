@@ -1,0 +1,46 @@
+{
+    "blocks" : [
+      {
+        "name" : "DevOps мобильного приложения",
+        "index" : "A0",
+        "up" : [
+          {
+            "name" : "Бизнес требования",
+            "start" : null,
+            "end" : "self"
+          }
+          ],
+        "left" : [
+          {
+            "name" : "Исходный код",
+            "start" : null,
+            "end" : "self"
+          },
+          {
+            "name" : "Конфигурация",
+            "start" : null,
+            "end" : "self"
+          }
+          ],
+        "right" : [
+          {
+            "name" : "Релизный артефакт",
+            "start" : null,
+            "end" : "self"
+          }
+          ],
+        "down" : [
+          {
+            "name" : "Разработчики",
+            "start" : null,
+            "end" : "self"
+          },
+          {
+            "name" : "Инструменты",
+            "start" : null,
+            "end" : "self"
+          }
+          ]
+      }
+      ]
+  }
