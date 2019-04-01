@@ -4,3 +4,31 @@
  * 
  * В разработке
  */
+
+ /**
+ * Функция: validateUsecase(usecase).
+ * 
+ * Функция проверки содержимого js-объекта usecase.
+ * В функции происходит отрисовка объектов Uml Usecase: актеров, прецедентов и связей.
+ * 
+ * Параметры:
+ * 
+ * usecase - js-объект диграммы.
+ * 
+ * Вовзращаемый результат:
+ * 
+ * true в случае если js-объект содержит все требуемые поля и семантически корректен,
+ * во всех остальных случаях - false
+ */
+ function validateUsecase(usecase) {
+     try{
+         if(usecase.activities.length < 1){
+             return false
+         }
+         //TODO: реализовать все требуемые проверки
+         return true
+     }
+     catch(e) {
+         return false
+     }
+ }

@@ -45,8 +45,14 @@ function showGraph(event) {
     var promise = loadJson(file)
     promise.then(
         result => {
+        var valid = validateUsecase(result)
         loader.style.display = "none"
-        drawGraph(result)
+        if(valid) {
+            drawGraph(result)
+        }
+        else {
+            showError("JSON не соотвествует формату Usecase")
+        }
     },
     error => {
         loader.style.display = "none"
