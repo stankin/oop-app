@@ -1,0 +1,93 @@
+{
+    "package": "DevOps мобильного приложения",
+    "activities": [
+      {
+        "id" : 0,
+        "value" : "Автоматизировать процесс DevOps"
+      },
+      {
+        "id" : 1,
+        "parent" : 0,
+        "value" : "Настроить конфигурацию"
+      },
+      {
+        "id" : 2,
+        "parent" : 0,
+        "value" : "Собрать приложение"
+      },
+      {
+        "id" : 3,
+        "parent" : 0,
+        "value" : "Протестировать приложение"
+      }
+    ],
+    "connections": [
+      {
+        "id" : 0,
+        "value" : "Данные конфигурации",
+        "start" :  1,
+        "end" : [2,3]
+      }
+    ],
+    "person" : {
+      "value": "Разработчики",
+      "actors" : [
+          {
+            "id" : 0,
+            "value" : "Программист",
+            "activities" : [1,2]
+          },
+          {
+            "id" : 1,
+            "value" : "DevOps инженер",
+            "activities" : [1,2]
+          }
+      ]
+    },
+    "mechanism" : {
+      "value": "Программный модуль",
+      "actors" : [
+          {
+            "id" : 0,
+            "value" : "IDE",
+            "activities" : [1,2]
+          },
+          {
+            "id" : 1,
+            "value" : "CI/CD система",
+            "activities" : [1,2]
+          }
+      ]
+    },
+    "control": [
+      {
+        "id" : 0,
+        "value" : "Бизнес требования",
+        "activities" : [0,1,2]
+      },
+      {
+        "id" : 1,
+        "value" : "План проекта",
+        "activities" : [0,1,2]
+      }
+    ],
+    "input": [
+      {
+        "id" : 0,
+        "value" : "Исходный код",
+        "activities" : [0,2]
+      },
+      {
+        "id" : 1,
+        "value" : "Конфигурация",
+        "activities" : [0,1]
+      }
+    ],
+    "output": [
+      {
+        "id" : 0,
+        "value" : "apk файл",
+        "activities" : [4]
+      }
+    ]
+  }

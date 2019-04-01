@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Тестирование</title>
+  <!-- оригинальная имплементация тестовой страницы: https://learn.javascript.ru/testing -->
+
+  <!-- подключаем стили Mocha, для отображения результатов -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mocha/6.0.2/mocha.css">
+  <!-- подключаем библиотеку Mocha -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mocha/6.0.2/mocha.js"></script>
+  <!-- настраиваем Mocha: предстоит BDD-тестирование -->
+  <script>
+    mocha.setup('bdd');
+  </script>
+
+  <!-- подключаем chai -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/chai/4.2.0/chai.js"></script>
+  <!-- в chai есть много всего, выносим assert и expect в глобальную область -->
+  <script>
+    var assert = chai.assert;
+    var expect = chai.expect;
+  </script>
+</head>
+
+<body>
+
+  <!-- подключаем тестируемые модули -->
+  <script type="text/javascript" src="/oop-app/jcase/js/mxClient.js"></script>
+  <script type="text/javascript" src="/oop-app/jcase/js/loader.js"></script>
+  <script type="text/javascript" src="/oop-app/jcase/js/validator.js"></script>
+  <script type="text/javascript" src="/oop-app/jcase/js/visualizer.js"></script>
+
+  <!-- подключаем тестовые модули -->
+  <script src="loader_test.js"></script>
+  <script src="validator_test.js"></script>
+
+  <!-- в элементе с id="mocha" будут результаты тестов -->
+  <div id="mocha"></div>
+
+  <!-- запустить тесты! -->
+  <script>
+    mocha.run();
+  </script>
+</body>
+
+</html>
