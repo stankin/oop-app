@@ -156,21 +156,23 @@
     particlesJS.load('particles-js', '/oop-app/jcase/p.json', function () {
       console.log('callback - particles.js config loaded');
     });
-    var loader = document.getElementById('loader')
-    var preview = document.getElementById('preview');
-    var resultText = document.getElementById('resultText');
-    var container = document.getElementById('graphContainer');
-    var title = document.getElementById('title');
-    var visualizer = new Visualizer(loader, resultText, container, preview, title);
-    document.getElementById('file').addEventListener('change', { 
-      handleEvent: function (event) { 
+    window.addEventListener("load", function() {
+      var loader = document.getElementById('loader')
+      var preview = document.getElementById('preview');
+      var resultText = document.getElementById('resultText');
+      var container = document.getElementById('graphContainer');
+      var title = document.getElementById('title');
+      var visualizer = new Visualizer(loader, resultText, container, preview, title);
+      document.getElementById('file').addEventListener('change', {
+        handleEvent: function (event) { 
         window.history.replaceState(null, null, window.location.pathname);
         visualizer.showDiagramFromEvent(event);
       } 
-    }, false);
-    var path = getParameterByName('path');
-    if(path != null) {
-      visualizer.showDiagramFromPath(path);
-    }
+      }, false);
+      var path = getParameterByName('path');
+      if(path != null) {
+        visualizer.showDiagramFromPath(path);
+      }
+    });
   </script>
 </html>
