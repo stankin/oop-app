@@ -1,12 +1,4 @@
 
-const TOP = 'top';
-
-const BOTTOM = 'bottom';
-
-const LEFT = 'left';
-
-const RIGHT = 'right';
-
 var IDEFShapes = {
 
     Box : function(graph, layer, name, index, x, y, width, height, fontSize) {
@@ -19,26 +11,26 @@ var IDEFShapes = {
 
     Corner : function(graph, layer, width, height, side, boxX, boxY, boxWidth, boxHeight) {
         switch (side) {
-            case TOP:
+            case VisualizerConstants.TOP:
               return graph.insertVertex(layer, null, null, boxX-boxWidth/2, 0, boxWidth, 0);
-            case BOTTOM:
+            case VisualizerConstants.BOTTOM:
               return graph.insertVertex(layer, null, null, boxX-boxWidth/2, height, boxWidth, 0);
-            case LEFT:
+            case VisualizerConstants.LEFT:
               return graph.insertVertex(layer, null, null, 0, boxY-boxHeight/2, 0, boxHeight);
-            case RIGHT:
+            case VisualizerConstants.RIGHT:
               return graph.insertVertex(layer, null, null, width, boxY-boxHeight/2, 0, boxHeight);
         }
     },
 
     Connector : function(graph, box, side, position) {
         switch (side) {
-            case TOP:
+            case VisualizerConstants.TOP:
               return graph.insertVertex(box, null, '', position, 0, 0, 0, null, true);
-            case BOTTOM:
+            case VisualizerConstants.BOTTOM:
               return graph.insertVertex(box, null, '', position, 1, 0, 0, null, true);
-            case LEFT:
+            case VisualizerConstants.LEFT:
               return graph.insertVertex(box, null, '', 0, position, 0, 0, null, true);
-            case RIGHT:
+            case VisualizerConstants.RIGHT:
               return graph.insertVertex(box, null, '', 1, position, 0, 0, null, true);
         }
     },
@@ -67,21 +59,21 @@ IDEFShapeFactory.prototype =
     constructor: IDEFShapeFactory,
 
     drawBox: function (name, index, x, y) { 
-        return new IDEFShapes.Box(graph, this.layer, name, index, x, y, 
+        return new IDEFShapes.Box(this.graph, this.layer, name, index, x, y, 
             this.boxWidth, this.boxHeight, this.BoxFontSize);
     },
 
     createCorner: function (side, boxX, boxY) { 
-        return new IDEFShapes.Corner(graph, this.layer, this.width, this.height, 
+        return new IDEFShapes.Corner(this.graph, this.layer, this.width, this.height, 
             side, boxX, boxY, this.boxWidth, this.boxHeight);
     },
 
     createConnector: function (box, side, position) { 
-        return new IDEFShapes.Connector(graph, box, side, position);
+        return new IDEFShapes.Connector(this.graph, box, side, position);
     },
 
     drawSolidLine: function (name, startConnector, endConnector) { 
-        return new IDEFShapes.SolidLine(graph, this.layer, name, startConnector, endConnector);
+        return new IDEFShapes.SolidLine(this.graph, this.layer, name, startConnector, endConnector);
     }
 
 }
