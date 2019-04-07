@@ -72,11 +72,11 @@ function showGraph(event) {
  * message - описание ошибки.
  */
 function showError(message) {
-    var preview = document.getElementById('preview')
-    var resultText = document.getElementById('resultText')
-    preview.style.display = "none"
-    resultText.style.display = ""
-    resultText.innerText = message
+    var preview = document.getElementById('preview');
+    var resultText = document.getElementById('resultText');
+    preview.style.display = "none";
+    resultText.style.display = "";
+    resultText.innerText = message;
 }
 
 /**
@@ -90,16 +90,16 @@ function showError(message) {
  * usecase - js-объект диграммы.
  */
 function drawGraph(usecase) {
-    var container = document.getElementById('graphContainer')
-    var preview = document.getElementById('preview')
-    var title = document.getElementById('title')
-    preview.style.display = ""
-    resultText.style.display = "none"
-    title.innerText = usecase.package
-    clearGraph(container)
-    createGraph(container)
-    drawA0(usecase, idef0)
-    drawUseCase(usecase, uml)
+    var container = document.getElementById('graphContainer');
+    var preview = document.getElementById('preview');
+    var title = document.getElementById('title');
+    preview.style.display = "";
+    resultText.style.display = "none";
+    title.innerText = usecase.package;
+    clearGraph(container);
+    createGraph(container);
+    drawIDEFDiagram(usecase, idef0);
+    drawUseCase(usecase, uml);
 }
 
 /**
@@ -129,27 +129,14 @@ function createGraph(container) {
     uml = root.insert(new mxCell());
     model = new mxGraphModel(root);
     graph = new mxGraph(container, model);
-    graph.setCellsSelectable(false)
-    graph.setCellsLocked(true)
+    graph.setCellsSelectable(false);
+    graph.setCellsLocked(true);
     graph.isCellFoldable = function(cell)
 	{
 	    return false;
     };
     model.setVisible(idef0, true);
     model.setVisible(uml, false);
-    var style = graph.getStylesheet().getDefaultVertexStyle();
-	style['fillColor'] = '#FFFFFF';
-	style['strokeColor'] = '#000000';
-	style['fontColor'] = '#000000';
-    style['fontStyle'] = '1';
-    style['fontSize'] = '16';	
-	style = graph.getStylesheet().getDefaultEdgeStyle();
-	style['strokeColor'] = '#000000';
-	style['fontColor'] = '#000000';
-	style['fontStyle'] = '0';
-	style['fontStyle'] = '0';
-	style['startSize'] = '8';
-    style['endSize'] = '8';
 }
 
 /**
@@ -165,14 +152,18 @@ function createGraph(container) {
  */
 function clearGraph(container) {
     if(graph != null) {
-        graph.destroy()
+        graph.destroy();
     }
     if(idef0Button != null) {
-        container.removeChild(idef0Button)
+        container.removeChild(idef0Button);
     }
     if(umlButton != null) {
-        container.removeChild(umlButton)
+        container.removeChild(umlButton);
     }
+}
+
+function drawIDEFDiagram(data, layer) {
+    drawA0(data, layer);
 }
 
 /**
@@ -186,65 +177,51 @@ function clearGraph(container) {
  * usecase - js-объект диграммы;
  * parent - родительский слой для диаграммы IDEF0.
  */
-function drawA0(usecase, parent) {
-    var width = graph.container.offsetWidth
-    var height = graph.container.offsetHeight-20
+function drawA0(data, layer) {
+    var width = graph.container.offsetWidth;
+    var height = graph.container.offsetHeight-20;
+    var a0 = data.activities[0];
+    var control = data.control;
+    var input = data.input;
+    var output = data.output;
+    var bootomConnections = [];
+    bootomConnections.push(data.mechanism);
+    bootomConnections.push(data.person);
+    var factory = new IDEFShapeFactory(graph, layer, 1);
     model.beginUpdate();
     try
     {
-        var a0 = graph.insertVertex(parent, null, usecase.activities[0].value, (width/10)*3, (height/10)*3, (width/10)*4, (height/10)*4);
-        var index = graph.insertVertex(a0, null, 'A' + usecase.activities[0].id, 0.95, 0.95, 0, 0, null, true)
-        var upConnector = graph.insertVertex(parent, null, null, (width/10)*3, 0, (width/10)*4, 0)
-        var downConnector = graph.insertVertex(parent, null, null, (width/10)*3, height, (width/10)*4, 0)
-        var leftConnector = graph.insertVertex(parent, null, null, 0, (height/10)*3, 0, (height/10)*4)
-        var rightConnector = graph.insertVertex(parent, null, null, width, (height/10)*3, 0, (height/10)*4)
-        var control = usecase.control
-        var input = usecase.input
-        var output = usecase.output
-        var step = 1 / control.length
-        var position = step/2
-        for(var i in control){
-            var connection = control[i]
-            var startPoint = graph.insertVertex(upConnector, null, '', position, 0, 0, 0, null, true);
-            var endPoint = graph.insertVertex(a0, null, '', position, 0, 0, 0, null, true);
-            var edge = graph.insertEdge(parent, null, connection.value, startPoint, endPoint,
-                        'startArrow=dash;startSize=12;endArrow=block;align=right;labelBackgroundColor=#FFFFFF;');
-            position = position + step
-        }
-        step = 1 / input.length
-        position = step/2
-        for(var i in input){
-            var connection = input[i]
-            var startPoint = graph.insertVertex(leftConnector, null, '', 0, position, 0, 0, null, true);
-            var endPoint = graph.insertVertex(a0, null, '', 0, position, 0, 0, null, true);
-            var edge = graph.insertEdge(parent, null, connection.value, startPoint, endPoint,
-                        'startArrow=dash;startSize=12;endArrow=block;align=top;labelBackgroundColor=#FFFFFF;');
-            position = position + step
-        }
-        step = 1 / output.length
-        position = step/2
-        for(var i in output){
-            var connection = output[i]
-            var endPoint = graph.insertVertex(rightConnector, null, '', 1, position, 0, 0, null, true);
-            var startPoint = graph.insertVertex(a0, null, '', 1, position, 0, 0, null, true);
-            var edge = graph.insertEdge(parent, null, connection.value, startPoint, endPoint,
-                        'startArrow=dash;startSize=12;endArrow=block;align=top;labelBackgroundColor=#FFFFFF;');
-            position = position + step
-        }
-        var mechanism = usecase.mechanism
-        var person = usecase.person
-        var startPoint = graph.insertVertex(downConnector, null, '', 0.25, 0, 0, 0, null, true);
-        var endPoint = graph.insertVertex(a0, null, '', 0.25, 1, 0, 0, null, true);
-        graph.insertEdge(parent, null, person.value, startPoint, endPoint,
-                    'startArrow=dash;startSize=12;endArrow=block;align=right;labelBackgroundColor=#FFFFFF;');
-        startPoint = graph.insertVertex(downConnector, null, '', 0.75, 0, 0, 0, null, true);
-        endPoint = graph.insertVertex(a0, null, '', 0.75, 1, 0, 0, null, true);
-        graph.insertEdge(parent, null, mechanism.value, startPoint, endPoint,
-                    'startArrow=dash;startSize=12;endArrow=block;align=right;labelBackgroundColor=#FFFFFF;');
+        var box = drawBox(factory, width/2, height/2, a0);
+        drawBoxArrows(factory, width/2, height/2, box, TOP, control);
+        drawBoxArrows(factory, width/2, height/2, box, BOTTOM, bootomConnections);
+        drawBoxArrows(factory, width/2, height/2, box, LEFT, input);
+        drawBoxArrows(factory, width/2, height/2, box, RIGHT, output);
     }
     finally
     {
     model.endUpdate();
+    }
+}
+
+function drawBox(factory, x, y, activity) {
+    return factory.drawBox(activity.value, activity.id, x, y);
+}
+
+function drawBoxArrows(factory, x, y, box, side, connections) {
+    var step = 1 / connections.length;
+    var position = step/2;
+    var corner = factory.createCorner(side, x, y);
+    for(var i in connections){
+        var connection = connections[i];
+        var cornerConnector = factory.createConnector(corner, side, position);
+        var boxConnector = factory.createConnector(box, side, position);
+        if(side == RIGHT){
+            factory.drawSolidLine(connection.value, boxConnector, cornerConnector);
+        }
+        else{
+            factory.drawSolidLine(connection.value, cornerConnector, boxConnector);
+        }
+        position = position + step;
     }
 }
 
@@ -259,70 +236,69 @@ function drawA0(usecase, parent) {
  * usecase - js-объект диграммы.
  * parent - родительский слой для диаграммы Uml Usecase.
  */
-function drawUseCase(usecase, parent) {
-    var width = graph.container.offsetWidth
-    var height = graph.container.offsetHeight-20
-    var personPosition = (width/10)*0.75
-    var mechanismPosition = (width/10)*9.25
-    var personActorsPosition = (width/10)*2.5
-    var mechanismActorsPosition = (width/10)*7.5
-    var activitiesPosition = width/2
+function drawUseCase(data, layer) {
+    var width = graph.container.offsetWidth;
+    var height = graph.container.offsetHeight-20;
+    var personPosition = (width/10)*0.75;
+    var mechanismPosition = (width/10)*9.25;
+    var personActorsPosition = (width/10)*2.5;
+    var mechanismActorsPosition = (width/10)*7.5;
+    var subject = data.activities[0];
+    var mechanism = data.mechanism;
+    var person = data.person;
+    var activities = data.activities;
+    var maxActorsCount = Math.max(mechanism.actors.length, person.actors.length);
+    var maxActivitiesCount = activities.length - 1;
+    var factory = new UMLShapeFactory(graph, layer, maxActorsCount, maxActivitiesCount);
     model.beginUpdate();
     try{
-        var mechanism = usecase.mechanism
-        var person = usecase.person
-        var activities = usecase.activities
-        var maxActorsCount = Math.max(mechanism.actors.length, person.actors.length)
-        var actorSize = Math.min((height/maxActorsCount)/2.5, height/8)
-        var activitiesCount = activities.length - 1
-        var activitySize = Math.min((height/activitiesCount)/2.5, height/8)
-        var actorFontSize = actorSize/8
-        var activityFontSize = activitySize/8
-        var packageNameFontSize = activitySize/7
-        var actorStyle = 'fontSize='+actorFontSize+';shape=image;image=images/actor.svg;verticalLabelPosition=bottom;verticalAlign=top'
-        var activityStyle = 'fontSize='+activityFontSize+';shape=ellipse;perimeter=ellipsePerimeter'
-        var package = graph.insertVertex(parent, null, null, width/2-width*0.15, 10, width*0.3, height-20);
-        var packageName = graph.insertVertex(package, null, usecase.activities[0].value, 0.5, 0.01, 0, 0, 'fontSize='+packageNameFontSize, true)
-        var a = []
-        var step = 1 / activitiesCount
-        var position = step/2
-        for(var i = 1; i < activities.length; i++){
-            var activity = activities[i]
-            var activityShape = graph.insertVertex(parent, null, activity.value, activitiesPosition-activitySize, (height * position)-activitySize/2, activitySize*2, activitySize, activityStyle);
-            a.push(activityShape)
-            position = position + step
-        }
-        var p0 = graph.insertVertex(parent, null, person.value, personPosition-actorSize/2, height/2-actorSize/2, actorSize, actorSize, actorStyle);
-        var m0 = graph.insertVertex(parent, null, mechanism.value, mechanismPosition-actorSize/2, height/2-actorSize/2, actorSize, actorSize, actorStyle);
-        var step = 1 / (person.actors.length + 1)
-        var position = step
-        for(var i in person.actors){
-            var actor = person.actors[i]
-            var p = graph.insertVertex(parent, null, actor.value, personActorsPosition-actorSize/2, (height * position)-actorSize/2, actorSize, actorSize, actorStyle);
-            graph.insertEdge(parent, null, null, p, p0, 'startArrow=dash;endArrow=block');
-            position = position + step
-            for(var j in actor.activities){
-                var activityNumber = actor.activities[j]
-                var activityShape = a[activityNumber-1]
-                graph.insertEdge(parent, null, null, p, activityShape, 'startArrow=dash;endArrow=dash');
-            }
-        }
-        var step = 1 / (mechanism.actors.length + 1)
-        var position = step
-        for(var i in mechanism.actors){
-            var actor = mechanism.actors[i]
-            var m = graph.insertVertex(parent, null, actor.value, mechanismActorsPosition-actorSize/2, (height * position)-actorSize/2, actorSize, actorSize, actorStyle);
-            graph.insertEdge(parent, null, null, m, m0, 'startArrow=dash;endArrow=block');
-            position = position + step
-            for(var j in actor.activities){
-                var activityNumber = actor.activities[j]
-                var activityShape = a[activityNumber-1]
-                graph.insertEdge(parent, null, null, m, activityShape, 'startArrow=dash;endArrow=dash');
-            }
-        }
+        drawSubject(factory, width, height, subject);
+        var usecasesShapes = drawUseCases(factory, width, height, activities);
+        var personShape = drawParentActor(factory, height, personPosition, person);
+        var mechanismShape = drawParentActor(factory, height, mechanismPosition, mechanism);
+        drawChildActors(factory, height, personActorsPosition, personShape, person.actors, usecasesShapes);
+        drawChildActors(factory, height, mechanismActorsPosition, mechanismShape, mechanism.actors, usecasesShapes);
     }
     finally
     {
         model.endUpdate();
+    }
+}
+
+function drawSubject(factory, width, height, activity) {
+    return factory.drawSubject(activity.value, width/2-width*0.15, 10, width*0.3, height-20);
+}
+
+function drawUseCases(factory, width, height, activities) {
+    var usecasesShapes = [];
+    var activitiesPosition = width/2;
+    var step = 1 / (activities.length - 1);
+    var position = step/2;
+    for(var i = 1; i < activities.length; i++){
+        var activity = activities[i];
+        var usecaseShape = factory.drawUseCase(activity.value, activitiesPosition, (height * position));
+        usecasesShapes.push(usecaseShape);
+        position = position + step;
+    }
+    return usecasesShapes;
+}
+
+function drawParentActor(factory, height, horisontalPosition, actor) {
+    return factory.drawActor(actor.value, horisontalPosition, height/2);
+}
+
+function drawChildActors(factory, height, horisontalPosition, parent, actors, usecases) {
+    var step = 1 / (actors.length + 1);
+    var verticalPosition = step;
+    for(var i in actors) {
+        var actor = actors[i];
+        var actorShape = factory.drawActor(actor.value, horisontalPosition, height * verticalPosition);
+        factory.drawGeneralization(parent, actorShape);
+        verticalPosition = verticalPosition + step;
+        for(var j in actor.activities){
+            var activityNumber = actor.activities[j];
+            var usecase = usecases[activityNumber-1];
+            factory.drawAssociation(actorShape, usecase);
+        }
     }
 }
