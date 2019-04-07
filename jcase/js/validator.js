@@ -2,8 +2,9 @@
  * Модуль проверки
  * Осуществляет проверку js-объекта на существования всех нужных полей, а также типов данных этих полей.
  * 
- * В разработке
  */
+
+function Validator() {}
 
  /**
  * Функция: validateUsecase(usecase).
@@ -20,15 +21,24 @@
  * true в случае если js-объект содержит все требуемые поля и семантически корректен,
  * во всех остальных случаях - false
  */
- function validateUsecase(usecase) {
-     try{
-         if(usecase.activities.length < 1){
-             return false
-         }
-         //TODO: реализовать все требуемые проверки
-         return true
+ Validator.prototype.validateJson = function(data) {
+    try{
+        if(data.activities.length < 1){
+            return false
+        }
+        var ajv = new Ajv();
+        var valid = ajv.validate(schema, data);
+        return valid;
      }
-     catch(e) {
-         return false
-     }
- }
+    catch(e) {
+        console.log(e)
+        return false
+    }
+}
+
+var schema = {
+    "properties": {
+        "package": { "type": "string" }
+    },
+    "additionalProperties": true
+}

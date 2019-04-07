@@ -8,34 +8,27 @@
   <link href="/oop-app/jcase/css/style.css" type="text/css" rel="stylesheet" media="screen,projection" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/ajv/6.10.0/ajv.min.js"></script>
   <script type="text/javascript">
-    mxBasePath = 'mxgraph';
+    mxBasePath = 'libs/mxgraph';
   </script>
   <script type="text/javascript" src="/oop-app/jcase/js/mxClient.js"></script>
   <script type="text/javascript" src="/oop-app/jcase/js/loader.js"></script>
   <script type="text/javascript" src="/oop-app/jcase/js/validator.js"></script>
   <script type="text/javascript" src="/oop-app/jcase/js/visualizer.js"></script>
-  <script src="https://vk.com/js/api/openapi.js?160" type="text/javascript"></script>
-  <!-- Yandex.Metrika counter -->
-  <script type="text/javascript">
-    (function (m, e, t, r, i, k, a) {
-    m[i] = m[i] || function () { (m[i].a = m[i].a || []).push(arguments) };
-      m[i].l = 1 * new Date(); k = e.createElement(t), a = e.getElementsByTagName(t)[0], k.async = 1, k.src = r, a.parentNode.insertBefore(k, a)
-    })
-      (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
-
-    ym(52344652, "init", {
-      id: 52344652,
-      clickmap: true,
-      trackLinks: true,
-      accurateTrackBounce: true,
-      webvisor: true
-    });
+  <script type="text/javascript" src="/oop-app/jcase/js/umlshapes.js"></script>
+  <script type="text/javascript" src="/oop-app/jcase/js/idefshapes.js"></script>
+  <script>
+    function getParameterByName(name) {
+      var url = window.location.href;
+      name = name.replace(/[\[\]]/g, '\\$&');
+      var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+      results = regex.exec(url);
+      if (!results) return null;
+      if (!results[2]) return '';
+      return decodeURIComponent(results[2].replace(/\+/g, ' '));
+    }
   </script>
-  <noscript>
-    <div><img src="https://mc.yandex.ru/watch/52344652" style="position:absolute; left:-9999px;" alt="" /></div>
-  </noscript>
-  <!-- /Yandex.Metrika counter -->
   <style>
     /* Стили для лоадера */
     .lds-ring {
@@ -121,7 +114,14 @@
         <input type="file" name="file" id="file" style="display: none;" />
       </form>
     </div>
-    <!-- Да, это говнокод, но и я не верстальщик -->
+    <br>
+    <div class="header" id="loader">
+      <a href="#" class="tryButton" onclick="window.location.search = '?path=/oop-app/jcase/samples/devops.json';">Попробовать</a>
+    </div>
+    <br>
+    <div class="header" id="loader">
+      <a href="/oop-app/jcase/samples/devops.json" class="downloadTestJSONButton" download="devops.json">Скачать тестовый JSON</a>
+    </div>
     <div class="header" id="preview"
       style="display: flex;justify-content: center;flex-direction: column;align-items: center; display: none;width:100%;height:100%">
       <h4 id="title" style="color:white;"></h4>
@@ -148,7 +148,6 @@
     </div>
     <!-- можно убрать -->
     <div class="footer">
-
       <a target="_blank" href="https://github.com/stankin/oop-app/wiki/jcase:-приложение-для-визуализации-IDEF0-и-Use-Case" class="fa fa-github"></a>
     </div>
   </div>
@@ -157,6 +156,21 @@
     particlesJS.load('particles-js', '/oop-app/jcase/p.json', function () {
       console.log('callback - particles.js config loaded');
     });
-    document.getElementById('file').addEventListener('change', showGraph, false);
+    var loader = document.getElementById('loader')
+    var preview = document.getElementById('preview');
+    var resultText = document.getElementById('resultText');
+    var container = document.getElementById('graphContainer');
+    var title = document.getElementById('title');
+    var visualizer = new Visualizer(loader, resultText, container, preview, title);
+    document.getElementById('file').addEventListener('change', { 
+      handleEvent: function (event) { 
+        window.history.replaceState(null, null, window.location.pathname);
+        visualizer.showDiagramFromEvent(event);
+      } 
+    }, false);
+    var path = getParameterByName('path');
+    if(path != null) {
+      visualizer.showDiagramFromPath(path);
+    }
   </script>
 </html>
