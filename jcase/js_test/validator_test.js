@@ -8,13 +8,15 @@
 describe("validateUsecase(usecase)", function() {
 
     it("should return true for valid json format", function() {
-        var mock = mockJson("./test_data/validator_true.json")
-        assert.equal(validateUsecase(mock), true);
+        var mock = mockJson('./test_data/validator_true.json');
+        var validator = new Validator();
+        assert.equal(validator.validateJson(mock), true);
     });
 
     it("should return false for invalid json format", function() {
-        var mock = mockJson("./test_data/validator_false.json")
-        assert.equal(validateUsecase(mock), false);
+        var mock = mockJson('./test_data/validator_false.json');
+        var validator = new Validator();
+        assert.equal(validator.validateJson(mock), false);
     });
   
 });
