@@ -1,23 +1,28 @@
 /**
  * Модуль отрисовки - отрисовывает в div контейнере диаграмму по загруженному файлу
  * @module visualizer
- * @typedef {string} Side
  */
 
 /**
-* 
-**/
-
-/** 
-* @enum {Side}
-*/
+ * Перечисление сторон блока или диаграммы
+ * @enum {string}
+ */
 var Side = {
+
+    /** @member {string} */
+    /** Верх */
     TOP: 'top',
 
+    /** @member {string} */
+    /** Низ */
     BOTTOM: 'bottom',
 
+    /** @member {string} */
+    /** Лево */
     LEFT: 'left',
 
+    /** @member {string} */
+    /** Право */
     RIGHT: 'right'
 }
 
@@ -39,27 +44,33 @@ function Visualizer(loader, resultText, container, preview, title) {
 }
 
 /**
- * Объект, содержащий текущую диаграмму.
+ * Объект, содержащий текущую диаграмму
+ * @type {mxGraph}
  */
 Visualizer.prototype.diagram = null
 /**
- * Объект, содержащий модель текущей диаграммы.
+ * Объект, содержащий модель текущей диаграммы
+ * @type {mxGraphModel}
  */
 Visualizer.prototype.model = null
 /**
- * Объект, содержащий слой idef0.
+ * Объект, содержащий слой idef0
+ * @type {mxCell}
  */
 Visualizer.prototype.idef0 = null
 /**
- * Объект, содержащий слой uml usecase.
+ * Объект, содержащий слой uml usecase
+ * @type {mxCell}
  */
 Visualizer.prototype.uml = null
 /**
- * Объект, содержащий кнопку отображения слоя idef0.
+ * Объект, содержащий кнопку отображения слоя idef0
+ * @type {div}
  */
 Visualizer.prototype.idef0Button = null
 /**
- * Объект, содержащий кнопку отображения слоя uml usecase.
+ * Объект, содержащий кнопку отображения слоя uml usecase
+ * @type {div}
  */
 Visualizer.prototype.umlButton = null
 
@@ -67,6 +78,55 @@ Visualizer.prototype.umlButton = null
  * Основная функция для начала визуализации диаграммы через HTML5 File API
  * 
  * @param {event} event - событие выбора файла
+ * 
+ * @startuml uml-activity.png
+ * start
+ * if (Ссылка пустая) then (Да)
+ *   :Отобразить ошибку "Поле для ссылки пусто";
+ *   stop;
+ * else (Нет)
+ *  endif;
+ * if (Загрузить файл по ссылке) then (Успех)
+ * else (Неудача)
+ *  :Отобразить ошибку "Ссылка неверна";
+ *  stop;
+ * endif;
+ * if(Десериализовать файл в js-объект) then (Успех)
+ * else(Неудача)
+ *   :Отобразить ошибку "Структура файла неверна";
+ *   stop;
+ * endif;
+ * if(js-объект содержит все корректные поля) then (Да)
+ * else(Нет)
+ *  :Отобразить ошибку "Файл имеет неверный формат";
+ *  stop;
+ * endif;
+ * :Отобразить блок A0;
+ * while (Для каждой стороны блока A0)
+ *  :Создать пустой объект в углу диаграммы;
+ *  while (Для каждой связи)
+ *  :Создать точку соединения для стороны;
+ *  :Создать точку соединения в углу диаграммы;
+ *  :Отобразить связь между точкой соединения блока и угла диаграммы;
+ *  endwhile
+ * endwhile;
+ * while (Для каждого варианта использования)
+ *  :Отобразить вариант использования;
+ * endwhile;
+ * :Отобразить актера person;
+ * :Отобразить актера mechanism;
+ * while (Для каждого дочернего актера из person и mechanism)
+ *  :Отобразить актера;
+ *  :Отобразить связь с родительским актером;
+ *  while (Для каждого варианта использования)
+ *     if(Вариант использования связан с дочерним актером) then(Да)
+ *     :Отобразить связь дочернего актера с вариантом использования;
+ *     else (Нет)
+ *     endif;
+ *   endwhile;
+ * endwhile;
+ * stop
+ * @enduml
  */
 Visualizer.prototype.showDiagramFromEvent = function(event) {
     this.loader.style.display = "";
@@ -275,6 +335,7 @@ Visualizer.prototype.drawA0 = function(data, layer) {
  * @param {number} x - координата расположения блока по оси x
  * @param {number} y - координата расположения блока по оси y
  * @param {Object} activity - описание варианта использования
+ * @returns {IDEFShapes.Box} блок диаграммы IDEF0
  * 
  */
 Visualizer.prototype.drawBox = function(factory, x, y, activity) {
@@ -288,7 +349,7 @@ Visualizer.prototype.drawBox = function(factory, x, y, activity) {
  * @param {number} x - координата расположения блока по оси x
  * @param {number} y - координата расположения блока по оси y
  * @param {IDEFShapes.Box} box - блок диаграммы
- * @param {Side} side - сторона блока
+ * @param {string} side - сторона блока
  * @param {Object[]} connections - описание связей блока
  * 
  */
@@ -317,6 +378,7 @@ Visualizer.prototype.drawBoxArrows = function(factory, x, y, box, side, connecti
  * @param {number} width - ширина диаграммы
  * @param {number} height - высота диаграммы
  * @param {Object} activity - описание главного варианта использования
+ * @returns {UMLShapes.Subject} субъект диаграммы Uml UseCase
  * 
  */
 Visualizer.prototype.drawSubject = function(factory, width, height, activity) {
@@ -330,6 +392,7 @@ Visualizer.prototype.drawSubject = function(factory, width, height, activity) {
  * @param {number} width - ширина диаграммы
  * @param {number} height - высота диаграммы
  * @param {Object[]} activities - описание вариантов использования
+ * @returns {UMLShapes.UseCase[]} массив вариантов использования (прецедентов) диаграммы Uml UseCase
  * 
  */
 Visualizer.prototype.drawUseCases = function(factory, width, height, activities) {
@@ -353,6 +416,7 @@ Visualizer.prototype.drawUseCases = function(factory, width, height, activities)
  * @param {number} height - высота диаграммы
  * @param {number} x - координата расположения актера по оси x
  * @param {Object} actor - описание актера
+ * @returns {UMLShapes.Actor} актер диаграммы Uml UseCase
  * 
  */
 Visualizer.prototype.drawParentActor = function (factory, height, x, actor) {

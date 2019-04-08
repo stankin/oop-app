@@ -1,9 +1,10 @@
 /**
- * Модуль unit тестирования модуля загрузки.
+ * Модуль unit тестирования модуля загрузки
+ * @module loader_test
  */
 
 /**
- * Тестирование функции loadJsonFromFile.
+ * Тестирование функции loadJsonFromFile
  */
 describe("loadJson(file)", function(done) {
 
@@ -28,7 +29,7 @@ describe("loadJson(file)", function(done) {
 });
 
 /**
- * Тестирование функции loadJsonFromUrl.
+ * Тестирование функции loadJsonFromUrl
  */
 describe("loadJson(file)", function(done) {
 
@@ -53,17 +54,10 @@ describe("loadJson(file)", function(done) {
 });
 
 /**
- * Функция: mockFile(path).
+ * Функция для создания заглушки файла
  * 
- * Функция для создания заглушки файла.
- * 
- * Параметры:
- * 
- * path - путь к файлу с тестовыми данными
- * 
- * Вовзращаемый результат:
- * 
- * объект, описывающий файл.
+ * @param {string} path - путь к файлу с тестовыми данными 
+ * @returns {File} объект, описывающий файл
  */
 function mockFile(path) {
     var request = new XMLHttpRequest();

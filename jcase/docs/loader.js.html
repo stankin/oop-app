@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Class: UseCase</title>
+    <title>JSDoc: Source: loader.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,345 +17,63 @@
 
 <div id="main">
 
-    <h1 class="page-title">Class: UseCase</h1>
+    <h1 class="page-title">Source: loader.js</h1>
 
     
 
 
 
-
-<section>
-
-<header>
     
-        <h2><span class="attribs"><span class="type-signature"></span></span>
-            <span class="ancestors"><a href="UMLShapes.html">UMLShapes</a>.</span>UseCase<span class="signature">(graph, layer, name, x, y, size, fontSize)</span><span class="type-signature"> &rarr; {<a href="UMLShapes.UseCase.html">UMLShapes.UseCase</a>}</span></h2>
-        
-    
-</header>
-
-<article>
-    <div class="container-overview">
-    
-        
-
-    
-
-    
-    <h4 class="name" id="UseCase"><span class="type-signature"></span>new UseCase<span class="signature">(graph, layer, name, x, y, size, fontSize)</span><span class="type-signature"> &rarr; {<a href="UMLShapes.UseCase.html">UMLShapes.UseCase</a>}</span></h4>
-    
-
-    
-
-
-
-<div class="description">
-    Прецедент
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>graph</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><a href="global.html#mxGraph">mxGraph</a></span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">объект диаграммы</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>layer</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><a href="global.html#mxCell">mxCell</a></span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">слой диаграммы</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>name</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">название прецедента</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>x</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">number</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">расположение по оси x</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>y</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">number</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">расположение по оси y</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>size</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">number</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">размер прецедента</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>fontSize</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">number</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">размер шрифта</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="umlshapes.js.html">umlshapes.js</a>, <a href="umlshapes.js.html#line49">line 49</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-    прецедент
-</div>
-
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type"><a href="UMLShapes.UseCase.html">UMLShapes.UseCase</a></span>
-
-
-    </dd>
-</dl>
-
-    
-
-
-
-
-
-    
-    </div>
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</article>
-
-</section>
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * Модуль загрузки - осуществляет загрузку js-объекта диаграммы из файла или по ссылке
+ * @module loader
+ */
+
+ /**
+ * Класс, предназначенный для загрузки js-объекта
+ * @constructor
+ */
+ function Loader() {}
+
+ /**
+ * Функция, которая загружает js-объект диаграммы из файла
+ * 
+ * @param {File} file - интерфейс, содержащий выбранный json файл
+ * @returns {Promise} объект, содержащий состояние асинхронной загрузки файла
+ */
+Loader.prototype.loadJsonFromFile = function (file) {
+  var reader = new FileReader();
+  var promise = new Promise((resolve, reject) => {
+    reader.onload = function(evt) {
+      try {
+        var result = JSON.parse(evt.target.result);
+        resolve(result);
+      } catch (e) {
+        reject('Загруженный файл не содержит структуру JSON');
+      }
+    }
+    reader.readAsText(file);
+  });
+  return promise;
+}
+
+/**
+ * Функция, которая загружает js-объект диаграммы по ссылке
+ * 
+ * @param {string} url - ссылка на json файл
+ * @returns {Promise} объект, содержащий состояние асинхронной загрузки файла
+ */
+Loader.prototype.loadJsonFromUrl = function (url) {
+  var request = new XMLHttpRequest();
+  request.open("GET", url, false);
+  request.send(null);
+  var file = new File([request.responseText], url);
+  return this.loadJsonFromFile(file);
+}</code></pre>
+        </article>
+    </section>
 
 
 
@@ -369,7 +87,7 @@
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Mon Apr 08 2019 14:59:45 GMT+0300 (GMT+03:00)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Mon Apr 08 2019 14:59:44 GMT+0300 (GMT+03:00)
 </footer>
 
 <script> prettyPrint(); </script>
