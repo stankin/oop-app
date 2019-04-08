@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Class: UseCase</title>
+    <title>JSDoc: Class: Validator</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Class: UseCase</h1>
+    <h1 class="page-title">Class: Validator</h1>
 
     
 
@@ -29,7 +29,7 @@
 <header>
     
         <h2><span class="attribs"><span class="type-signature"></span></span>
-            <span class="ancestors"><a href="UMLShapes.html">UMLShapes</a>.</span>UseCase<span class="signature">(graph, layer, name, x, y, size, fontSize)</span><span class="type-signature"> &rarr; {<a href="UMLShapes.UseCase.html">UMLShapes.UseCase</a>}</span></h2>
+            <span class="ancestors"><a href="module-validator.html">validator</a>~</span>Validator<span class="signature">()</span><span class="type-signature"></span></h2>
         
     
 </header>
@@ -42,7 +42,7 @@
     
 
     
-    <h4 class="name" id="UseCase"><span class="type-signature"></span>new UseCase<span class="signature">(graph, layer, name, x, y, size, fontSize)</span><span class="type-signature"> &rarr; {<a href="UMLShapes.UseCase.html">UMLShapes.UseCase</a>}</span></h4>
+    <h4 class="name" id="Validator"><span class="type-signature"></span>new Validator<span class="signature">()</span><span class="type-signature"></span></h4>
     
 
     
@@ -50,7 +50,114 @@
 
 
 <div class="description">
-    Прецедент
+    Класс, предназначенный для проверки js-объекта
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="validator.js.html">validator.js</a>, <a href="validator.js.html#line11">line 11</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <h3 class="subsection-title">Methods</h3>
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="validateJson"><span class="type-signature"></span>validateJson<span class="signature">(data)</span><span class="type-signature"> &rarr; {boolean}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Функция проверки содержимого js-объекта usecase.
+В функции происходит отрисовка объектов Uml Usecase: актеров, прецедентов и связей.
 </div>
 
 
@@ -86,13 +193,13 @@
 
         <tr>
             
-                <td class="name"><code>graph</code></td>
+                <td class="name"><code>data</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type"><a href="global.html#mxGraph">mxGraph</a></span>
+<span class="param-type">Object</span>
 
 
             
@@ -102,145 +209,7 @@
 
             
 
-            <td class="description last">объект диаграммы</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>layer</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><a href="global.html#mxCell">mxCell</a></span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">слой диаграммы</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>name</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">название прецедента</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>x</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">number</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">расположение по оси x</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>y</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">number</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">расположение по оси y</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>size</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">number</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">размер прецедента</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>fontSize</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">number</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">размер шрифта</td>
+            <td class="description last">js-объект диграммы.</td>
         </tr>
 
     
@@ -281,7 +250,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="umlshapes.js.html">umlshapes.js</a>, <a href="umlshapes.js.html#line49">line 49</a>
+        <a href="validator.js.html">validator.js</a>, <a href="validator.js.html#line21">line 21</a>
     </li></ul></dd>
     
 
@@ -308,7 +277,8 @@
 
         
 <div class="param-desc">
-    прецедент
+    true в случае если js-объект содержит все требуемые поля и семантически корректен,
+во всех остальных случаях - false
 </div>
 
 
@@ -319,7 +289,7 @@
     </dt>
     <dd>
         
-<span class="param-type"><a href="UMLShapes.UseCase.html">UMLShapes.UseCase</a></span>
+<span class="param-type">boolean</span>
 
 
     </dd>
@@ -331,23 +301,7 @@
 
 
 
-    
-    </div>
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
+        
     
 
     
@@ -369,7 +323,7 @@
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Mon Apr 08 2019 14:59:45 GMT+0300 (GMT+03:00)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Mon Apr 08 2019 14:59:44 GMT+0300 (GMT+03:00)
 </footer>
 
 <script> prettyPrint(); </script>

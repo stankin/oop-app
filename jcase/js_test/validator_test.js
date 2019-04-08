@@ -1,9 +1,10 @@
 /**
- * Модуль unit тестирования модуля проверки.
+ * Модуль unit тестирования модуля проверки
+ * @module validator_test
  */
 
 /**
- * Тестирование функции validateUsecase(usecase).
+ * Тестирование функции validateUsecase(usecase)
  */
 describe("validateUsecase(usecase)", function() {
 
@@ -22,17 +23,10 @@ describe("validateUsecase(usecase)", function() {
 });
 
 /**
- * Функция: mockJson(path).
+ * Функция для создания заглушки js-объекта
  * 
- * Функция для создания заглушки js-объекта.
- * 
- * Параметры:
- * 
- * path - путь к файлу с тестовыми данными
- * 
- * Вовзращаемый результат:
- * 
- * js-объект.
+ * @param {string} path - путь к файлу с тестовыми данными
+ * @returns {Object} js-объект
  */
 function mockJson(path) {
     var request = new XMLHttpRequest();

@@ -1,23 +1,19 @@
 /**
- * Модуль отрисовки - отрисовывает в div контейнере диаграмму по загруженному файлу.
- * 
+ * Модуль загрузки - осуществляет загрузку js-объекта диаграммы из файла или по ссылке
+ * @module loader
  */
 
+ /**
+ * Класс, предназначенный для загрузки js-объекта
+ * @constructor
+ */
  function Loader() {}
 
  /**
- * Функция: loadJson(event).
+ * Функция, которая загружает js-объект диаграммы из файла
  * 
- * Функция, которая загружает и читает содержимое выбранного файла,
- * а также осуществляет проверку и парсинг содержимого.
- * 
- * Параметры:
- * 
- * file - объект, описывающий файл.
- * 
- * Вовзращаемый результат:
- * 
- * promise - объект, содержащий состояние асинхронной загрузки файла.
+ * @param {File} file - интерфейс, содержащий выбранный json файл
+ * @returns {Promise} объект, содержащий состояние асинхронной загрузки файла
  */
 Loader.prototype.loadJsonFromFile = function (file) {
   var reader = new FileReader();
@@ -35,6 +31,12 @@ Loader.prototype.loadJsonFromFile = function (file) {
   return promise;
 }
 
+/**
+ * Функция, которая загружает js-объект диаграммы по ссылке
+ * 
+ * @param {string} url - ссылка на json файл
+ * @returns {Promise} объект, содержащий состояние асинхронной загрузки файла
+ */
 Loader.prototype.loadJsonFromUrl = function (url) {
   var request = new XMLHttpRequest();
   request.open("GET", url, false);

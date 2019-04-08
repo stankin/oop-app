@@ -1,12 +1,22 @@
-
-/** @namespace IDEFShapes */
+/** 
+ * Массив форм для фабрики диаграммы IDEF0
+ * @namespace
+ */
 var IDEFShapes = {
 
     /**
-    * myFunction is now MyNamespace~myFunction.
-    * @function Box
-    * @memberof IDEFShapes
-    * @inner
+    * Блок диаграммы
+    * @constructor
+    * @param {mxGraph} graph - объект диаграммы
+    * @param {mxCell} layer - слой диаграммы
+    * @param {string} name - название блока
+    * @param {number} index - индекс блока
+    * @param {number} x - расположение по оси x
+    * @param {number} y - расположение по оси y
+    * @param {number} width - ширина
+    * @param {number} height - высота
+    * @param {number} fontSize - размер шрифта
+    * @returns {IDEFShapes.Box} блок диаграммы
     */
     Box : function(graph, layer, name, index, x, y, width, height, fontSize) {
         var style = 'fontSize='+fontSize + 
@@ -16,6 +26,20 @@ var IDEFShapes = {
         return box;
     },
 
+    /**
+    * Угол диграммы для создания стрелок, ведущих к блоку
+    * @constructor
+    * @param {mxGraph} graph - объект диаграммы
+    * @param {mxCell} layer - слой диаграммы
+    * @param {number} width - ширина диаграммы
+    * @param {number} height - высота диаграммы
+    * @param {string} side - сторона блока
+    * @param {number} boxX - расположение блока по оси x
+    * @param {number} boxY - расположение блока по оси y
+    * @param {number} boxWidth - ширина блока
+    * @param {number} boxHeight - высота блока
+    * @returns {IDEFShapes.Corner} угол диаграммы
+    */
     Corner : function(graph, layer, width, height, side, boxX, boxY, boxWidth, boxHeight) {
         switch (side) {
             case Side.TOP:
@@ -29,6 +53,15 @@ var IDEFShapes = {
         }
     },
 
+    /**
+    * Точка соединения для стрелки
+    * @constructor
+    * @param {mxGraph} graph - объект диаграммы
+    * @param {IDEFShapes.Box} box - блок диаграммы
+    * @param {string} side - сторона соединения
+    * @param {number} position - локальная координата расположения точки соединения
+    * @returns {IDEFShapes.Connector} точка соединения для стрелки
+    */
     Connector : function(graph, box, side, position) {
         switch (side) {
             case Side.TOP:
@@ -42,6 +75,16 @@ var IDEFShapes = {
         }
     },
 
+    /**
+    * Сплошная стрелка
+    * @constructor
+    * @param {mxGraph} graph - объект диаграммы
+    * @param {mxCell} layer - слой диаграммы
+    * @param {string} name - название стрелки
+    * @param {mxCell} startConnector - начальная точка соединения
+    * @param {mxCell} endConnector - конечная точка соединения
+    * @returns {IDEFShapes.SolidLine} сплошная стрелка
+    */
     SolidLine : function(graph, layer, name, startConnector, endConnector) {
         var style = 'strokeColor=#000000;fontColor=#000000;fontStyle=0;' +  
         'startArrow=dash;startSize=12;endArrow=block;align=right;labelBackgroundColor=#FFFFFF;'
@@ -53,7 +96,7 @@ var IDEFShapes = {
 /**
  * Фабрика форм для диаграммы IDEF0
  * @constructor
- * @param {mxGraph} loader - класс диаграммы
+ * @param {mxGraph} graph - класс диаграммы
  * @param {mxCell} layer - слой диаграммы
  * @param {number} boxesCount - количество блоков на данном уровне
  */
@@ -69,27 +112,58 @@ function IDEFShapeFactory(graph, layer, boxesCount)
 }
 
 /**
- * Фабрика форм для диаграммы IDEF0
- * @memberof IDEFShapeFactory
+ * Прототип фабрики форм для диаграммы IDEF0
  */
 IDEFShapeFactory.prototype =
 {
+    /**
+    * Конструктор фабрики
+    */
     constructor: IDEFShapeFactory,
 
+    /**
+    * Функция создания блока диаграммы
+    * @param {string} name - название блока
+    * @param {number} index - индекс блока
+    * @param {number} x - расположение по оси x
+    * @param {number} y - расположение по оси y 
+    * @returns {IDEFShapes.Box} блок диаграммы
+    */
     drawBox: function (name, index, x, y) { 
         return new IDEFShapes.Box(this.graph, this.layer, name, index, x, y, 
             this.boxWidth, this.boxHeight, this.BoxFontSize);
     },
 
+    /**
+    * Функция создания угла диаграммы для блока
+    * @param {string} side - сторона блока
+    * @param {number} boxX - расположение блока по оси x
+    * @param {number} boxY - расположение блока по оси y
+    * @returns {IDEFShapes.Corner} угол диаграммы
+    */
     createCorner: function (side, boxX, boxY) { 
         return new IDEFShapes.Corner(this.graph, this.layer, this.width, this.height, 
             side, boxX, boxY, this.boxWidth, this.boxHeight);
     },
 
+    /**
+    * Функция создания точки соединения для стрелки
+    * @param {IDEFShapes.Box} box - блок диаграммы
+    * @param {string} side - сторона соединения
+    * @param {number} position - локальная координата расположения точки соединения
+    * @returns {IDEFShapes.Connector} точка соединения для стрелки
+    */
     createConnector: function (box, side, position) { 
         return new IDEFShapes.Connector(this.graph, box, side, position);
     },
 
+    /**
+    * Функция создания сплошной стрелки
+    * @param {string} name - название стрелки
+    * @param {mxCell} startConnector - начальная точка соединения
+    * @param {mxCell} endConnector - конечная точка соединения
+    * @returns {IDEFShapes.SolidLine} сплошная стрелка
+    */
     drawSolidLine: function (name, startConnector, endConnector) { 
         return new IDEFShapes.SolidLine(this.graph, this.layer, name, startConnector, endConnector);
     }
