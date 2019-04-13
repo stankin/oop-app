@@ -1,0 +1,42 @@
+[
+    {
+        "id": 1,
+        "name": "factor1",
+        "S-O": "S_O",
+        "W-O": null,
+        "S-T": null,
+        "W-T": null
+    },
+    {
+        "id": 2,
+        "name": "factor2",
+        "S-O": null,
+        "W-O": "W_O",
+        "S-T": null,
+        "W-T": null
+    },
+    {
+        "id": 3,
+        "name": "factor3",
+        "S-O": "оп чидагоп",
+        "W-O": null,
+        "S-T": "а я спеваю",
+        "W-T": null
+    },
+    {
+        "id": 4,
+        "name": "factor4",
+        "S-O": "S_Osdgdfh",
+        "W-O": null,
+        "S-T": null,
+        "W-T": null
+    },
+    {
+        "id": 5,
+        "name": "factor5",
+        "S-O": "S_Osdgdsdgsdgfh",
+        "W-O": null,
+        "S-T": null,
+        "W-T": null
+    }
+]
