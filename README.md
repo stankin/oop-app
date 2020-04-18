@@ -2,7 +2,7 @@
 Приложение [визуализации моделей](https://stankin.github.io/oop-app)
 
 [Великолепный интерфейс](https://ivangpn.github.io/site.github.io/#Page1.xaml) задачи №3
-
+* [Roadmap](https://github.com/stankin/oop-app/projects/2)
 Состоит из программных модулей, выполняющих простые преобразования данных (JSON) в визуальные элементы (HTML, canvas), к примеру:
 * [json --> диаграмма IDEF0 и Use Case](https://github.com/stankin/oop-app/wiki/jcase:-приложение-для-визуализации-IDEF0-и-Use-Case)
 * [json --> диаграмма UML Class](https://github.com/stankin/oop-app/wiki/json-to-uml-class)
@@ -17,3 +17,5 @@
 Смежные проекты:
 * [Библиотека служебных математических (статистических) функций](https://github.com/stankin/oop-stat)
 * [Библиотека служебных функций получения и преобразования данных](https://github.com/stankin/oop-model)
+
+* [Roadmap](https://github.com/stankin/oop-app/projects/2)
