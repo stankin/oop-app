@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>***</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+  <section>
+    <div class="container">
+      <form action="#" class="data-input">
+        <div class="automation-object">
+          <p class="process-question">Какой процесс подлежит автоматизации?</p>
+          <div class="process">
+            <div class="process-answer">
+              <label for="activity" class="process-label">Деятельность (А):</label>
+              <input type="text" class="process-input" id="activity">
+            </div>
+            <div class="process-answer process-select">
+              <label for="unit" class="process-label">Единица измерения времени: </label>
+              <select name="unit" class="unit-choice" id="unit-choice">
+                <option class="unit-type" value="minutes">минута</option>
+                <option class="unit-type" value="hours">час</option>
+                <option class="unit-type" value="shift">смена</option>
+                <option class="unit-type" value="days">день</option>
+                <option class="unit-type" value="quarter">квартал</option>
+                <option class="unit-type" value="year">год</option>
+              </select>
+            </div>
+            <div class="process-answer">
+              <label for="timeBefore" class="process-label">Требуемое время до:</label>
+              <input type="text" class="process-input" id="timeBefore">
+            </div>
+            <div class="process-answer">
+              <label for="timeAfter" class="process-label">Требуемое время после:</label>
+              <input type="text" class="process-input" id="timeAfter">
+            </div>
+          </div>
+        </div>
+        <div class="process-flows">
+          <div class="data-area">
+            <div class="flow-info flow-select">
+              <select name="flow" class="flow-choice" id="flow-choice">
+                <option class="flow-type" value="tool">Поток инструментов (М):</option>
+                <option class="flow-type" value="control">Поток управления (С):</option>
+                <option class="flow-type" value="mechanisms">Поток механизмов (Р):</option>
+                <option class="flow-type" value="output">Поток выхода (О):</option>
+              </select>
+            </div>
+            <div class="flow-info">
+              <label for="data" class="flow-label">Наименование потока:</label>
+              <input type="text" class="flow-input" id="data">
+            </div>
+            <div class="flow-info process-select">
+              <label for="time" class="flow-label">Единица измерения времени: </label>
+              <select name="time" class="time-choice" id="time-choice">
+                <option class="time" value="minutes">минута</option>
+                <option class="time" value="hours">час</option>
+                <option class="time" value="shift">смена</option>
+                <option class="time" value="days">день</option>
+                <option class="time" value="quarter">квартал</option>
+                <option class="time" value="year">год</option>
+              </select>
+            </div>
+            <div class="flow-info">
+              <label for="frequency-before" class="flow-label">Частота до автоматизации:</label>
+              <input type="text" class="flow-input" id="frequency-before">
+            </div>
+            <div class="flow-info">
+              <label for="frequency-after" class="flow-label">Частота после автоматизации:</label>
+              <input type="text" class="flow-input" id="frequency-after">
+            </div>
+          </div>
+          <button class="add-btn"></button>
+        </div>
+        <div class="global-period">
+          <div class="gl-period">
+            <label for="period-value" class="gl-label gl-special-label">Период расчёта: </label>
+            <input type="text" class="gl-input" id="period-value">
+          </div>
+          <div class="gl-period">
+            <label for="gl-unit-select" class="gl-label">Единица измерения времени: </label>
+            <select name="gl-time" class="gl-time-choice" id="gl-unit-select">
+              <option class="gl-time" value="minutes">минута</option>
+              <option class="gl-time" value="hours">час</option>
+              <option class="gl-time" value="shift">смена</option>
+              <option class="gl-time" value="days">день</option>
+              <option class="gl-time" value="quarter">квартал</option>
+              <option class="gl-time" value="year">год</option>
+            </select>
+          </div>
+          <div class="gl-period">
+            <label for="gl-select" class="gl-label">Единица измерения времени в отчете: </label>
+            <select name="gl-time" class="gl-time-choice" id="gl-select">
+              <option class="gl-time" value="minutes">минута</option>
+              <option class="gl-time" value="hours">час</option>
+              <option class="gl-time" value="shift">смена</option>
+              <option class="gl-time" value="days">день</option>
+              <option class="gl-time" value="quarter">квартал</option>
+              <option class="gl-time" value="year">год</option>
+            </select>
+          </div>
+          <div class="gl-period">
+            <label for="comment" class="gl-label gl-special-label">Комментарий: </label>
+            <input type="text" class="gl-input" id="comment">
+          </div>
+        </div>
+        <button class="start">Рассчитать</button>
+      </form>
+    </div>
+  </section>
+  <section>
+    <table>
+      <tbody>
+        <tr>
+          <td>Время до автоматизации</td>
+          <td class="time-before"></td>
+          <td>Время после автоматизации</td>
+          <td class="time-after"></td>
+        </tr>
+        <tr>
+          <td>Общая частота потоков до автоматизации</td>
+          <td class="flows-frequency-before"></td>
+          <td>Общая частота потоков после автоматизации</td>
+          <td class="flows-frequency-after"></td>
+        </tr>
+        <tr>
+          <td>Общее количество потоков до автоматизации за период</td>
+          <td class="flows-quantity-before"></td>
+          <td>Общее количество потоков после автоматизации за период</td>
+          <td class="flows-quantity-after"></td>
+        </tr>
+        <tr>
+          <td>Необходимое этим потокам время до автоматизации</td>
+          <td class="required-time-before"></td>
+          <td>Необходимое этим потокам время после автоматизации</td>
+          <td class="required-time-after"></td>
+        </tr>
+        <tr>
+          <td colspan=2 class="special">Результирующая выгода во времени</td>
+          <td colspan=2 class="result"></td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+  <footer>
+    <a href="https://github.com/petiteprincesse/EffectsCalc/wiki" class="link">Прочитать инструкцию</a>
+    <button class="search">Найти прошлый отчёт</button>
+  </footer>
+  <div class="modal">
+    <div class="dialog">
+      <button class="close">X</button>
+    </div>
+  </div>
+  <script src="js/main.js"></script>
+</body>
+
+</html>
+
+<!-- <div class="generator">
+  <h2 class="choice-making data-title">Выберите вид генератора</h2>
+  <div class="select">
+    <select name="flow" class="flow-choice" id="flow-choice">
+      <option class="flow-type" value="tool">Поток инструментов (М):</option>
+      <option class="flow-type" value="control">Поток управления (С):</option>
+      <option class="flow-type" value="mechanisms">Поток механизмов (Р):</option>
+      <option class="flow-type" value="output">Поток выхода (О):</option>
+    </select>
+  </div>
+</div> --> 
