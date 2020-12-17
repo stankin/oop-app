@@ -72,7 +72,7 @@
 
 - [Инструкция](https://github.com/AirNus/AirNus.github.io/wiki/Business-game-%E2%80%93-%D0%98%D0%BD%D1%81%D1%82%D1%80%D1%83%D0%BA%D1%86%D0%B8%D1%8F)
 
-- ??? Саша Н. тут надо что то придумать
+- [Документация](https://github.com/stankin/oop-app/blob/master/milenchiki/README.md)
 
 #### 6. ПП (Программист)	Стиль и способы разработки, используемые фреймворки	Мазитов	Микешин
 6.1. Должен использоваться объектно-ориентированный подход и связка JavaScript + CSS + HTML
