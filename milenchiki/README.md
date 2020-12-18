@@ -65,7 +65,13 @@
 - load2Form.js - функция, которая загружает результат расчета на сайт
 
 5.4.2. Данные, включая контрольные примеры:
-- \test\TestMilenchiki.side
+- \tests\TestMilenchiki.side
+
+- \tests\RunTests.js
+
+- \tests\testCOCOMO.js
+
+- \tests\testFPA.js
 
 5.4.3. Вики-страницы с документацией и инструкциями:
 
