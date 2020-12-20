@@ -1,0 +1,697 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<!--begin::Head-->
+
+<head>
+    <meta charset="utf-8">
+    <title>The Calculator</title>
+    <meta name="description" content="Updates and statistics">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!--begin::Fonts-->
+    <link rel="stylesheet" href="css/css.css">
+    <!--end::Fonts-->
+    <!--begin::Page Vendors Styles(used by this page)-->
+    <link href="css/fullcalendar.bundle.css" rel="stylesheet" type="text/css">
+    <!--end::Page Vendors Styles-->
+    <!--begin::Global Theme Styles(used by all pages)-->
+    <link href="css/plugins.bundle.css" rel="stylesheet" type="text/css">
+    <link href="css/prismjs.bundle.css" rel="stylesheet" type="text/css">
+    <link href="css/style.bundle.css" rel="stylesheet" type="text/css">
+	
+    <!--end::Global Theme Styles-->
+    <!--begin::Layout Themes(used by all pages)-->
+    <!--end::Layout Themes-->
+    <link rel="shortcut icon" href="favicon.ico">	
+    
+</head>
+<!--end::Head-->
+<!--begin::Body-->
+
+<body id="kt_body" class="header-fixed header-mobile-fixed" data-header-scroll="on" data-scrolltop="on">
+
+    <!--begin::Main-->
+    <!--begin::Header Mobile-->
+    <div id="kt_header_mobile" class="header-mobile bg-primary header-mobile-fixed">
+        <!--begin::Logo-->
+        <a href="#">
+            <img alt="Logo" src="img/logo-letter-9.png" class="max-h-30px">
+        </a>
+        <!--end::Logo-->
+        <!--begin::Toolbar-->
+        <div class="d-flex align-items-center">
+            <button class="btn p-0 burger-icon burger-icon-left ml-4" id="kt_header_mobile_toggle">
+                <span></span>
+            </button>
+            <button class="btn p-0 ml-2" id="kt_header_mobile_topbar_toggle">
+                <span class="svg-icon svg-icon-xl">
+                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                            <polygon points="0 0 24 0 24 24 0 24" />
+                            <path d="M12,11 C9.790861,11 8,9.209139 8,7 C8,4.790861 9.790861,3 12,3 C14.209139,3 16,4.790861 16,7 C16,9.209139 14.209139,11 12,11 Z" fill="#000000" fill-rule="nonzero" opacity="0.3" />
+                            <path d="M3.00065168,20.1992055 C3.38825852,15.4265159 7.26191235,13 11.9833413,13 C16.7712164,13 20.7048837,15.2931929 20.9979143,20.2 C21.0095879,20.3954741 20.9979143,21 20.2466999,21 C16.541124,21 11.0347247,21 3.72750223,21 C3.47671215,21 2.97953825,20.45918 3.00065168,20.1992055 Z" fill="#000000" fill-rule="nonzero" />
+                        </g>
+                    </svg>
+                    <!--end::Svg Icon-->
+                </span>
+            </button>
+        </div>
+        <!--end::Toolbar-->
+    </div>
+    <!--end::Header Mobile-->
+    <div class="d-flex flex-column flex-root">
+        <!--begin::Page-->
+        <div class="d-flex flex-row flex-column-fluid page">
+            <!--begin::Wrapper-->
+            <div class="d-flex flex-column flex-row-fluid wrapper" id="kt_wrapper">
+                <!--begin::Header-->
+                <div id="kt_header" class="header flex-column header-fixed">
+                    <!--begin::Top-->
+                    <div class="header-top">
+                        <!--begin::Container-->
+                        <div class="container">
+                            <!--begin::Left-->
+                            <div class="d-none d-lg-flex align-items-center mr-3">
+                                <!--begin::Logo-->
+                                <a href="#" class="mr-20">
+                                    <img alt="Logo" src="img/logo-letter-9.png" class="max-h-35px">
+                                </a>
+                                <!--end::Logo-->
+                            </div>
+
+
+
+                            <!--end::Left-->
+                            <!--begin::Topbar-->
+                            <div class="topbar">
+                                <!--begin::User-->
+                                <div class="topbar-item">
+                                    <div class="btn btn-icon btn-hover-transparent-white w-auto d-flex align-items-center btn-lg px-2" id="kt_quick_user_toggle">
+                                        <div class="d-flex flex-column text-right pr-3">
+                                            <span class="text-white opacity-90 font-weight-bold font-size-sm d-none d-md-inline">Миленчики & Practice Team </span>
+                                            <span class="text-white font-weight-bolder font-size-sm d-none d-md-inline">Created with Love in 2020</span>
+                                        </div>
+                                        <span class="symbol symbol-35">
+                                            <span class="symbol-label font-size-h5 font-weight-bold text-white bg-white-o-30">💓</span>
+                                        </span>
+                                    </div>
+                                </div>
+                                <!--end::User-->
+                            </div>
+                            <!--end::Topbar-->
+                        </div>
+                        <!--end::Container-->
+                    </div>
+                    <!--end::Top-->
+                </div>
+                <!--end::Header-->
+                <!--begin::Content-->
+                <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+                    <!--begin::Entry-->
+                    <div class="d-flex flex-column-fluid">
+                        <!--begin::Container-->
+                        <div class="container">
+                            <!--begin::Dashboard-->
+                            <!--begin::Row-->
+                            <div class="row">
+                                <div class="col-lg-4">
+                                    <!--begin::List Widget 4-->
+                                    <div class="card card-custom card-stretch gutter-b">
+                                        <!--begin::Header-->
+                                        <div class="card-header border-0">
+                                            <h3 class="card-title font-weight-bolder text-dark">Результаты:</h3>
+                                        </div>
+                                        <!--end::Header-->
+                                        <!--begin::Body-->
+                                        <div class="card-body pt-2">
+                                            <!--begin::Item-->
+                                            <div class="d-flex align-items-center">
+                                                <!--begin::Bullet-->
+                                                <span class="bullet bullet-bar bg-success align-self-stretch"></span>
+                                                <!--end::Bullet-->
+                                                <!--begin::Checkbox-->
+                                                <label class="checkbox checkbox-lg checkbox-light-success checkbox-inline flex-shrink-0 m-0 mx-4">
+                                                    <input id="VAF_checkbox" type="checkbox" name="select" value="1">
+                                                    <span></span>
+                                                </label>
+                                                <!--end::Checkbox-->
+                                                <!--begin::Text-->
+                                                <div class="d-flex flex-column flex-grow-1">
+                                                    <a href="#" class="text-dark-75 text-hover-primary font-weight-bold font-size-lg mb-1">VAF – Фактор выравнивания</a>
+                                                    <span id="VAF" class="text-muted font-weight-bold">Результат будет тут</span>
+                                                </div>
+                                                <!--end::Text-->
+                                                <!--end::Dropdown-->
+                                            </div>
+                                            <!--end:Item-->
+                                            <!--begin::Item-->
+                                            <div class="d-flex align-items-center mt-10">
+                                                <!--begin::Bullet-->
+                                                <span class="bullet bullet-bar bg-primary align-self-stretch"></span>
+                                                <!--end::Bullet-->
+                                                <!--begin::Checkbox-->
+                                                <label class="checkbox checkbox-lg checkbox-light-primary checkbox-inline flex-shrink-0 m-0 mx-4">
+                                                    <input id="UFP_checkbox" type="checkbox" value="1">
+                                                    <span></span>
+                                                </label>
+                                                <!--end::Checkbox-->
+                                                <!--begin::Text-->
+                                                <div class="d-flex flex-column flex-grow-1">
+                                                    <a href="#" class="text-dark-75 text-hover-primary font-weight-bold font-size-lg mb-1">UFP – Количество не выровненных функциональных точек </a>
+                                                    <span id="UFP" class="text-muted font-weight-bold">Результат будет тут</span>
+                                                </div>
+                                                <!--end::Text-->
+                                                <!--end::Dropdown-->
+                                            </div>
+                                            <!--end::Item-->
+                                            <!--begin::Item-->
+                                            <div class="d-flex align-items-center mt-10">
+                                                <!--begin::Bullet-->
+                                                <span class="bullet bullet-bar bg-warning align-self-stretch"></span>
+                                                <!--end::Bullet-->
+                                                <!--begin::Checkbox-->
+                                                <label class="checkbox checkbox-lg checkbox-light-warning checkbox-inline flex-shrink-0 m-0 mx-4">
+                                                    <input id="DFP_checkbox" type="checkbox" value="1">
+                                                    <span></span>
+                                                </label>
+                                                <!--end::Checkbox-->
+                                                <!--begin::Text-->
+                                                <div class="d-flex flex-column flex-grow-1">
+                                                    <a href="#" class="text-dark-75 text-hover-primary font-size-sm font-weight-bold font-size-lg mb-1">DFP – Проект разработки продукта </a>
+                                                    <span id="DFP" class="text-muted font-weight-bold">Результат будет тут</span>
+                                                </div>
+                                                <!--end::Text-->
+                                                <!--end::Dropdown-->
+                                            </div>
+                                            <!--end::Item-->
+                                            <!--begin::Item-->
+                                            <div class="d-flex align-items-center mt-10">
+                                                <!--begin::Bullet-->
+                                                <span class="bullet bullet-bar bg-info align-self-stretch"></span>
+                                                <!--end::Bullet-->
+                                                <!--begin::Checkbox-->
+                                                <label class="checkbox checkbox-lg checkbox-light-info checkbox-inline flex-shrink-0 m-0 mx-4">
+                                                    <input id="SLOC/KLOC_checkbox" type="checkbox" value="1">
+                                                    <span></span>
+                                                </label>
+                                                <!--end::Checkbox-->
+                                                <!--begin::Text-->
+                                                <div class="d-flex flex-column flex-grow-1">
+                                                    <a href="#" class="text-dark-75 text-hover-primary font-weight-bold font-size-lg mb-1">SLOC/KLOC – Количество строк кода</a>
+                                                    <span id="SLOC/KLOC" class="text-muted font-weight-bold">Результат будет тут</span>
+                                                </div>
+                                                <!--end::Text-->
+                                                <!--end::Dropdown-->
+                                            </div>
+                                            <!--end::Item-->
+                                            <!--begin::Item-->
+                                            <div class="d-flex align-items-center mt-10">
+                                                <!--begin::Bullet-->
+                                                <span class="bullet bullet-bar bg-danger align-self-stretch"></span>
+                                                <!--end::Bullet-->
+                                                <!--begin::Checkbox-->
+                                                <label class="checkbox checkbox-lg checkbox-light-danger checkbox-inline flex-shrink-0 m-0 mx-4">
+                                                    <input id="PM_checkbox" type="checkbox" value="1">
+                                                    <span></span>
+                                                </label>
+                                                <!--end::Checkbox:-->
+                                                <!--begin::Title-->
+                                                <div class="d-flex flex-column flex-grow-1">
+                                                    <a href="#" class="text-dark-75 text-hover-primary font-weight-bold font-size-lg mb-1">PM – Суммарная трудоемкость проекта</a>
+                                                    <span id="PM" class="text-muted font-weight-bold">Результат будет тут</span>
+                                                </div>
+                                                <!--end::Text-->
+                                            </div>
+                                            <!--end::Item-->
+                                            <!--begin::Item-->
+                                            <div class="d-flex align-items-center mt-10">
+                                                <!--begin::Bullet-->
+                                                <span class="bullet bullet-bar bg-danger align-self-stretch"></span>
+                                                <!--end::Bullet-->
+                                                <!--begin::Checkbox-->
+                                                <label class="checkbox checkbox-lg checkbox-light-danger checkbox-inline flex-shrink-0 m-0 mx-4">
+                                                    <input id="TDEV_checkbox" type="checkbox" value="1">
+                                                    <span></span>
+                                                </label>
+                                                <!--end::Checkbox:-->
+                                                <!--begin::Title-->
+                                                <div class="d-flex flex-column flex-grow-1">
+                                                    <a href="#" class="text-dark-75 text-hover-primary font-weight-bold font-size-lg mb-1">TDEV – Длительность проекта</a>
+                                                    <span id="TDEV" class="text-muted font-weight-bold">Результат будет тут</span>
+                                                </div>
+                                                <!--end::Text-->
+                                            </div>
+                                            <!--end::Item-->
+                                        </div>
+                                        <!--end::Body-->
+										<div class="card-footer">
+													<div class="row">
+																	<div class="col-lg-2"></div>
+																	<div class="col-lg-8" style="margin-left: 20px">
+															<div class=" mr-2">
+															<button type="button" class="btn btn-light-primary font-weight-bolder" onclick="Download()" aria-haspopup="true" aria-expanded="false">
+															<i class="la la-file-text-o"></i> Получить результаты</button>
+															<div id="downlLink"></div>
+														</div>
+																	</div>
+													</div>
+												</div>
+                                    </div>
+                                    <!--end:List Widget 4-->
+                                </div>
+                                <div class="col-lg-8">
+                                    <!--begin::Advance Table Widget 2-->
+                                    <div class="card card-custom card-stretch gutter-b">
+                                        <!--begin::Header-->
+                                        <div class="card-header border-0 pt-5">
+                                            <h3 class="card-title align-items-start flex-column">
+                                                <span class="card-label font-weight-bolder text-dark">Таблица Данных</span>
+                                                <span class="text-muted mt-3 font-weight-bold font-size-sm">Выберите метод расчёта, введите данные и нажмите "Рассчитать"</span>
+                                            </h3>
+                                            <div class="card-toolbar">
+                                                <ul class="nav nav-pills nav-pills-sm nav-dark-75">
+                                                    <li class="nav-item">
+                                                        <a id="tabUFP" class="nav-link py-2 px-4 active" data-toggle="tab" href="#kt_tab_pane_11_4">UFP</a>
+                                                    </li>
+                                                    <li class="nav-item">
+                                                        <a id="tabFPA" class="nav-link py-2 px-4" data-toggle="tab" href="#kt_tab_pane_11_1">IFPUG FPA</a>
+                                                    </li>
+                                                    <li class="nav-item">
+                                                        <a id="tabCOCOMO" class="nav-link py-2 px-4" data-toggle="tab" href="#kt_tab_pane_11_3">COCOMO II</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <!--end::Header-->
+                                        <!--begin::Body-->
+                                        <div class="card-body pt-2 pb-0 mt-n3">
+                                            <div class="tab-content mt-5" id="myTabTables11">
+                                                <!--begin::Tap pane-->
+                                                <div class="tab-pane fade" id="kt_tab_pane_11_1" role="tabpanel" aria-labelledby="kt_tab_pane_11_1">
+                                                    <div class="card card-custom">
+
+                                                        <form>
+                                                            <div class="card-body" style="padding: 1rem">
+                                                                <div class="row">
+                                                                    <div class="col-lg-6 col-md-6 col-sm-12" style="padding-right: 30px;">
+                                                                        <div class="form-group row">
+																			<label>Обмен данными</label>
+                                                                            <input type="number" value="1" class="form-control" name="Обмен данными" placeholder="От 0 до 5" data-ifpugFPA="true">
+                                                                            <div class="fv-plugins-message-container"></div>
+
+                                                                        </div>
+                                                                        <div class="form-group row">
+																			<label>Распределенная обработка</label>
+                                                                            <input type="number" value="1" class="form-control" name="Распределенная обработка" placeholder="От 0 до 5" data-ifpugFPA="true">
+                                                                            <div class="fv-plugins-message-container"></div>
+
+                                                                        </div>
+                                                                        <div class="form-group row">
+																			<label>Производительность (время отклика)</label>
+                                                                            <input type="number" value="1" class="form-control" name="Производительность (время отклика)" placeholder="От 0 до 5" data-ifpugFPA="true">
+                                                                            <div class="fv-plugins-message-container"></div>
+
+                                                                        </div>
+                                                                        <div class="form-group row">
+																			<label>Ограничения аппаратные</label>
+                                                                            <input type="number" value="1" class="form-control" name="Ограничения аппаратные" placeholder="От 0 до 5" data-ifpugFPA="true">
+                                                                            <div class="fv-plugins-message-container"></div>
+
+                                                                        </div>
+                                                                        <div class="form-group row">
+																			<label>Транзакционная нагрузка</label>
+                                                                            <input type="number" value="1" class="form-control" name="Транзакционная нагрузка" placeholder="От 0 до 5" data-ifpugFPA="true">
+                                                                            <div class="fv-plugins-message-container"></div>
+
+                                                                        </div>
+                                                                        <div class="form-group row">
+																			<label>Взаимодействие с пользователем</label>
+                                                                            <input type="number" value="1" class="form-control" name="Взаимодействие с пользователем" placeholder="От 0 до 5" data-ifpugFPA="true">
+                                                                            <div class="fv-plugins-message-container"></div>
+
+                                                                        </div>
+                                                                        <div class="form-group row">
+																			<label>Эргономика</label>
+                                                                            <input type="number" value="1" class="form-control" name="Эргономика" placeholder="От 0 до 5" data-ifpugFPA="true">
+                                                                            <div class="fv-plugins-message-container"></div>
+
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-lg-6 col-md-6 col-sm-12">
+                                                                        <div class="form-group row">
+																			<label>Интенсивность изменения данных</label>
+                                                                            <input type="number" value="1" class="form-control" name="Интенсивность изменения данных" placeholder="От 0 до 5" data-ifpugFPA="true">
+                                                                            <div class="fv-plugins-message-container"></div>
+
+                                                                        </div>
+                                                                        <div class="form-group row">
+																			<label>Сложность обработки</label>
+                                                                            <input type="number" value="1" class="form-control" name="Сложность обработки" placeholder="От 0 до 5" data-ifpugFPA="true">
+                                                                            <div class="fv-plugins-message-container"></div>
+
+                                                                        </div>
+                                                                        <div class="form-group row">
+																			<label>Повторное использование</label>
+                                                                            <input type="number" value="1" class="form-control" name="Повторное использование" placeholder="От 0 до 5" data-ifpugFPA="true">
+                                                                            <div class="fv-plugins-message-container"></div>
+
+                                                                        </div>
+                                                                        <div class="form-group row">
+																			<label>Удобство инсталляции</label>
+                                                                            <input type="number" value="1" class="form-control" name="Удобство инсталляции" placeholder="От 0 до 5" data-ifpugFPA="true">
+                                                                            <div class="fv-plugins-message-container"></div>
+
+                                                                        </div>
+                                                                        <div class="form-group row">
+																			<label>Удобство администрирования</label>
+                                                                            <input type="number" value="1" class="form-control" name="Удобство администрирования" placeholder="От 0 до 5" data-ifpugFPA="true">
+                                                                            <div class="fv-plugins-message-container"></div>
+
+                                                                        </div>
+                                                                        <div class="form-group row">
+																			<label>Портируемость</label>
+                                                                            <input type="number" value="1" class="form-control" name="Портируемость" placeholder="От 0 до 5" data-ifpugFPA="true">
+                                                                            <div class="fv-plugins-message-container"></div>
+
+                                                                        </div>
+                                                                        <div class="form-group row">
+																			<label>Гибкость</label>
+                                                                            <input type="number" value="1" class="form-control" name="Гибкость" placeholder="От 0 до 5" data-ifpugFPA="true">
+                                                                            <span class="form-text text-muted"></span>
+                                                                            <div class="fv-plugins-message-container"></div>
+
+                                                                        </div>
+                                                                    </div>
+																	
+                                                                </div>
+																
+                                                            </div>
+															<div class="d-flex justify-content-between border-top mt-5 pt-10 mb-10">
+															<div class="mr-2">
+																<button type="reset" class="btn btn-secondary font-weight-bolder text-uppercase px-9 py-4">Очистить данные</button>
+															</div>
+															<div>
+																<select id="language" name="Язык программирования" class="btn btn-light-primary font-weight-bolder mr-2 text-uppercase px-9 py-4">
+                                                                            <option value="Assembly" selected="selected">Assembly</option>
+                                                                            <option value="Java">Java</option>
+                                                                            <option value="C++">C++</option>
+                                                                        </select>
+                                                                        <button type="button" class="btn btn-primary font-weight-bolder text-uppercase px-9 py-4" onclick="onStartCalc('FPA')">Рассчитать</button>
+															</div>
+														</div>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                                <!--end::Tap pane-->
+                                                <!--begin::Tap pane-->
+                                                <div class="tab-pane fade" id="kt_tab_pane_11_3" role="tabpanel" aria-labelledby="kt_tab_pane_11_3">
+                                                    <!--begin::Table-->
+                                                    <div class="card card-custom">
+                                                        <form>
+                                                            <div class="card-body" style="padding: 1rem">
+                                                                <div class="row">
+                                                                    <div class="col-lg-6 col-md-6 col-sm-12" style="padding-right: 30px;">
+                                                                        <div class="form-group row">
+																		<label>Опыт аналогичных разработок</label>
+                                                                            <select id="PREC" class="form-control" name="Опыт аналогичных разработок" data-ifpugCOCOMO_SF="true">
+                                                                                <option value="1.24" selected="selected">1.24 - Низкая сложность</option>
+                                                                                <option value="2.48">2.48</option>
+                                                                                <option value="3.72">3.72</option>
+                                                                                <option value="4.96">4.96</option>
+                                                                                <option value="6.20">6.20 - Высокая сложность</option>
+                                                                            </select>
+                                                                            <div class="fv-plugins-message-container"></div>
+
+                                                                        </div>
+                                                                        <div class="form-group row">
+																		<label>Гибкость процесса</label>
+                                                                            <select id="FLEX" class="form-control" name="Гибкость процесса" data-ifpugCOCOMO_SF="true">
+                                                                                <option value="1.01" selected="selected">1.01 - Низкая сложность</option>
+                                                                                <option value="2.03">2.03</option>
+                                                                                <option value="3.04">3.04</option>
+                                                                                <option value="4.05">4.05</option>
+                                                                                <option value="5.07">5.07 - Высокая сложность</option>
+                                                                            </select>
+                                                                            <div class="fv-plugins-message-container"></div>
+
+                                                                        </div>
+                                                                        <div class="form-group row">
+																		<label>Разрешение рисков</label>
+                                                                            <select id="RESL" class="form-control" name="Разрешение рисков" data-ifpugCOCOMO_SF="true">
+                                                                                <option value="1.41" selected="selected">1.41 - Низкая сложность</option>
+                                                                                <option value="2.83">2.83</option>
+                                                                                <option value="4.24">4.24</option>
+                                                                                <option value="5.65">5.65</option>
+                                                                                <option value="7.07">7.07 - Высокая сложность</option>
+                                                                            </select>
+                                                                            <div class="fv-plugins-message-container"></div>
+
+                                                                        </div>
+                                                                        <div class="form-group row">
+																		<label>Сработанность команды</label>
+                                                                            <select id="TEAM" class="form-control" name="Сработанность команды" data-ifpugCOCOMO_SF="true">
+                                                                                <option value="1.10" selected="selected">1.10 - Низкая сложность</option>
+                                                                                <option value="2.19">2.19</option>
+                                                                                <option value="3.29">3.29</option>
+                                                                                <option value="4.38">4.38</option>
+                                                                                <option value="5.48">5.48 - Высокая сложность</option>
+                                                                            </select>
+                                                                            <div class="fv-plugins-message-container"></div>
+
+                                                                        </div>
+                                                                        <div class="form-group row">
+																		<label>Зрелость процессов</label>
+                                                                            <select id="PMAT" class="form-control" name="Зрелость процессов" data-ifpugCOCOMO_SF="true">
+                                                                                <option value="1.56" selected="selected">1.56 - Низкая сложность</option>
+                                                                                <option value="3.12">3.12</option>
+                                                                                <option value="4.68">4.68</option>
+                                                                                <option value="6.24">6.24</option>
+                                                                                <option value="7.80">7.80 - Высокая сложность</option>
+                                                                            </select>
+                                                                            <div class="fv-plugins-message-container"></div>
+
+                                                                        </div>
+                                                                        <div class="form-group row">
+																		<label>SLOC - количество строк кода</label>
+                                                                            <input type="number" id="SLOC" class="form-control" name="SLOC - количество строк кода">
+                                                                            <div class="fv-plugins-message-container"></div>
+
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-lg-6 col-md-6 col-sm-12">
+                                                                        <div class="form-group row">
+																		<label>Квалификация персонала</label>
+                                                                            <input type="number" id="PERS" class="form-control" name="Квалификация персонала" placeholder="От 0.5 до 2.12" data-ifpugCOCOMO_EM="true">
+                                                                            <div class="fv-plugins-message-container"></div>
+
+                                                                        </div>
+                                                                        <div class="form-group row">
+																		<label>Надежность продукта</label>
+                                                                            <input type="number" id="RCPX" class="form-control" name="Надежность продукта" placeholder="От 0.49 до 2.72" data-ifpugCOCOMO_EM="true">
+                                                                            <div class="fv-plugins-message-container"></div>
+
+                                                                        </div>
+                                                                        <div class="form-group row">
+																		<label>Повторное использование</label>
+                                                                            <input type="number" id="RUSE" class="form-control" name="Повторное использование" placeholder="От 0.95 до 1.24" data-ifpugCOCOMO_EM="true">
+                                                                            <div class="fv-plugins-message-container"></div>
+
+                                                                        </div>
+                                                                        <div class="form-group row">
+																		<label>Сложность платформы разработки</label>
+                                                                            <input type="number" id="PDIF" class="form-control" name="Сложность платформы разработки" placeholder="От 0.87 до 2.61" data-ifpugCOCOMO_EM="true">
+                                                                            <div class="fv-plugins-message-container"></div>
+
+                                                                        </div>
+                                                                        <div class="form-group row">
+																		<label>Опыт персонала</label>
+                                                                            <input type="number" id="PREX" class="form-control" name="Опыт персонала" placeholder="От 0.62 до 1.59" data-ifpugCOCOMO_EM="true">
+                                                                            <div class="fv-plugins-message-container"></div>
+
+                                                                        </div>
+                                                                        <div class="form-group row">
+																		<label>Оборудование коммуникаций</label>
+                                                                            <input type="number" id="FCIL" class="form-control" name="Оборудование коммуникаций" placeholder="От 0.62 до 1.43" data-ifpugCOCOMO_EM="true">
+                                                                            <div class="fv-plugins-message-container"></div>
+
+                                                                        </div>
+                                                                        <div class="form-group row">
+																		<label>Сжатие расписания</label>
+                                                                            <input type="number" id="SCED" class="form-control" name="Сжатие расписания" placeholder="От 1.0 до 1.43" data-ifpugCOCOMO_EM="true">
+                                                                            <div class="fv-plugins-message-container"></div>
+
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+															<div class="d-flex justify-content-between border-top mt-5 pt-10 mb-10">
+															<div class="mr-2">
+																<button type="reset" class="btn btn-secondary font-weight-bolder text-uppercase px-9 py-4">Очистить данные</button>
+															</div>
+															<div>
+																		<button type="button" onclick="RunTests()" class="btn btn-light-primary font-weight-bolder text-uppercase px-9 py-4 mr-4">Запустить тесты</button>
+                                                                        <button type="button" class="btn btn-primary font-weight-bolder text-uppercase px-9 py-4" onclick="onStartCalc('COCOMO')">Рассчитать</button>
+															</div>
+														</div>
+                                                        </form>
+                                                    </div>
+                                                    <!--end::Table-->
+                                                </div>
+                                                <!--end::Tap pane 4 -->
+                                                <div class="tab-pane fade show active" id="kt_tab_pane_11_4" role="tabpanel" aria-labelledby="kt_tab_pane_11_4">
+                                                    <div class="card card-custom">
+														<div class="col-xl-12 col-xxl-12" style="padding: 0; margin-top: 15px">
+														<!--begin::Wizard Form-->
+													<form class="form fv-plugins-bootstrap fv-plugins-framework" id="kt_form">
+														<!--begin::Wizard Step 1-->
+														<div data-wizard-type="step-content" data-wizard-state="current" id="tableUFP">
+															<div class="row">
+																<div class="col-xl-2">
+																	<!--begin::Input-->
+																	<div class="form-group fv-plugins-icon-container">
+																		<label>Номер формы</label>
+																		<input type="text" class="form-control form-control-solid form-control-lg" name="numberForm" placeholder="А0-А4" value="A0">
+																		<span class="form-text text-muted">Например, А0</span>
+																	<div class="fv-plugins-message-container"></div></div>
+																	<!--end::Input-->
+																</div>
+																<div class="col-xl-4">
+																	<!--begin::Input-->
+																	<div class="form-group fv-plugins-icon-container">
+																<label>Наименование</label>
+																<input type="text" class="form-control form-control-solid form-control-lg" name="nameForm" placeholder="Введите название" value="Управлять пользователями">
+																<span class="form-text text-muted">Например, управлять пользователями</span>
+																	<!--end::Input-->
+																</div></div>
+																<div class="col-xl-3">
+																	<!--begin::Input-->
+																	<div class="form-group fv-plugins-icon-container">
+																		<label>Количество форм</label>
+																		<input type="text" class="form-control form-control-solid form-control-lg" name="countForm" placeholder="Значение" value="4">
+																		<span class="form-text text-muted">Например, 2</span>
+																	<div class="fv-plugins-message-container"></div></div>
+																	<!--end::Input-->
+																</div>
+																<div class="col-xl-3">
+																	<!--begin::Input-->
+																	<div class="form-group fv-plugins-icon-container">
+																		<label>Количество данных</label>
+																		<input type="text" class="form-control form-control-solid form-control-lg" name="countData" placeholder="Значение" value="4">
+																		<span class="form-text text-muted">Например, 5</span>
+																	<div class="fv-plugins-message-container"></div></div>
+																	<!--end::Input-->
+																</div>
+                                                            </div>
+                                                            
+														</div>
+														<!--end::Wizard Step 1-->												
+														<!--begin::Wizard Actions-->
+														<div class="d-flex justify-content-between border-top mt-5 pt-10">
+															<div class="mr-2">
+																<button type="button" onclick="addRowUFP()" class="btn btn-light-primary font-weight-bolder text-uppercase px-9 py-4" data-wizard-type="action-prev">Добавить строку</button>
+															</div>
+															<div>
+																<button type="button" onclick="onStartCalc('UFP')" class="btn btn-primary font-weight-bolder text-uppercase px-9 py-4" data-wizard-type="action-next">Далее</button>
+															</div>
+														</div>
+														<!--end::Wizard Actions-->
+													</form>
+													<!--end::Wizard Form-->
+												</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!--end::Body-->
+                                    </div>
+                                    <!--end::Advance Table Widget 2-->
+                                </div>
+                            </div>
+                            <!--end::Row-->
+                            <!--end::Dashboard-->
+                        </div>
+                        <!--end::Container-->
+                    </div>
+                    <!--end::Entry-->
+                </div>
+                <!--end::Content-->
+                <!--begin::Footer-->
+                <div class="footer bg-white py-4 d-flex flex-lg-column" id="kt_footer">
+                    <!--begin::Container-->
+                    <div class="container d-flex flex-column flex-md-row align-items-center justify-content-between" style="padding: 0px">
+                        <!--begin::Copyright-->
+                        <div class="text-dark order-2 order-md-1">
+                            <span class="text-muted font-weight-bold mr-2">2020©</span>
+                            <a href="#" target="_blank" class="text-dark-75 text-hover-primary">17-05</a>
+                        </div>
+                        <!--end::Copyright-->
+                        <!--begin::Nav-->
+                        <div class="nav nav-dark order-1 order-md-2">
+                            <a href="https://github.com/stankin/oop-app/tree/master/milenchiki" target="_blank" class="nav-link pr-3 pl-0">GitHub</a>
+                            <a href="https://github.com/MilenaShermatova/MilenaShermatova.github.io/wiki/%D0%BB%D0%B0%D0%B1%D1%8B" target="_blank" class="nav-link pl-3 pr-0">Contacts</a>
+                        </div>
+                        <!--end::Nav-->
+                    </div>
+                    <!--end::Container-->
+                </div>
+                <!--end::Footer-->
+            </div>
+            <!--end::Wrapper-->
+        </div>
+        <!--end::Page-->
+    </div>
+    <!--end::Main-->
+    <!--begin::Scrolltop-->
+    <div id="kt_scrolltop" class="scrolltop">
+        <span class="svg-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                    <polygon points="0 0 24 0 24 24 0 24" />
+                    <rect fill="#000000" opacity="0.3" x="11" y="10" width="2" height="10" rx="1" />
+                    <path d="M6.70710678,12.7071068 C6.31658249,13.0976311 5.68341751,13.0976311 5.29289322,12.7071068 C4.90236893,12.3165825 4.90236893,11.6834175 5.29289322,11.2928932 L11.2928932,5.29289322 C11.6714722,4.91431428 12.2810586,4.90106866 12.6757246,5.26284586 L18.6757246,10.7628459 C19.0828436,11.1360383 19.1103465,11.7686056 18.7371541,12.1757246 C18.3639617,12.5828436 17.7313944,12.6103465 17.3242754,12.2371541 L12.0300757,7.38413782 L6.70710678,12.7071068 Z" fill="#000000" fill-rule="nonzero" />
+                </g>
+            </svg>
+            <!--end::Svg Icon-->
+        </span>
+    </div>
+    <!--end::Scrolltop-->
+    <!--begin::Global Config(global config for global JS scripts)-->
+    <script>
+        var KTAppSettings = { "breakpoints": { "sm": 576, "md": 768, "lg": 992, "xl": 1200, "xxl": 1200 }, "colors": { "theme": { "base": { "white": "#ffffff", "primary": "#0BB783", "secondary": "#E5EAEE", "success": "#1BC5BD", "info": "#8950FC", "warning": "#FFA800", "danger": "#F64E60", "light": "#F3F6F9", "dark": "#212121" }, "light": { "white": "#ffffff", "primary": "#D7F9EF", "secondary": "#ECF0F3", "success": "#C9F7F5", "info": "#EEE5FF", "warning": "#FFF4DE", "danger": "#FFE2E5", "light": "#F3F6F9", "dark": "#D6D6E0" }, "inverse": { "white": "#ffffff", "primary": "#ffffff", "secondary": "#212121", "success": "#ffffff", "info": "#ffffff", "warning": "#ffffff", "danger": "#ffffff", "light": "#464E5F", "dark": "#ffffff" } }, "gray": { "gray-100": "#F3F6F9", "gray-200": "#ECF0F3", "gray-300": "#E5EAEE", "gray-400": "#D6D6E0", "gray-500": "#B5B5C3", "gray-600": "#80808F", "gray-700": "#464E5F", "gray-800": "#1B283F", "gray-900": "#212121" } }, "font-family": "Poppins" };
+    </script>
+    <!--end::Global Config-->
+    <!--begin::Global Theme Bundle(used by all pages)-->
+    <script src="js/plugins.bundle.js"></script>
+    <script type="text/javascript" id>
+        !function (b, e, f, g, a, c, d) { b.fbq || (a = b.fbq = function () { a.callMethod ? a.callMethod.apply(a, arguments) : a.queue.push(arguments) }, b._fbq || (b._fbq = a), a.push = a, a.loaded = !0, a.version = "2.0", a.queue = [], c = e.createElement(f), c.async = !0, c.src = g, d = e.getElementsByTagName(f)[0], d.parentNode.insertBefore(c, d)) }(window, document, "script", "https://connect.facebook.net/en_US/fbevents.js"); fbq("init", "738802870177541"); fbq("track", "PageView");
+    </script>
+    <noscript><img height="1" width="1" style="display:none" src="tr"></noscript>
+
+    <script src="js/prismjs.bundle.js"></script>
+    <script src="js/scripts.bundle.js"></script>
+    <!--end::Global Theme Bundle-->
+    <!--begin::Page Vendors(used by this page)-->
+    <script src="js/fullcalendar.bundle.js"></script>
+    <!--end::Page Vendors-->
+    <!--begin::Page Scripts(used by this page)-->
+    <script src="js/widgets.js"></script>
+    <!--end::Page Scripts-->
+    <script src="./lib/calc_data_object.js"></script>
+    <script src="js/addRowUFP.js"></script>
+    <script src="js/calcUFP.js"></script>
+    <script src="js/load2Form.js"></script>
+    <script src="js/calcCOCOMO.js"></script>
+    <script src="js/calcFPA.js"></script>
+    <script src="js/onStartCalc.js"></script>
+    <script src="js/Download.js"></script>
+
+    <script src="./tests/random.js"></script>
+    <script src="./tests/testCalcFPA.js"></script>
+    <script src="./tests/testCalcCOCOMO.js"></script>
+    <script src="./tests/testFPA.js"></script>
+    <script src="./tests/testCOCOMO.js"></script>
+    <script src="./tests/RunTests.js"></script>
+    <!--end::Body-->
+    <svg id="SvgjsSvg1001" width="2" height="0" xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs" style="overflow: hidden; top: -100%; left: -100%; position: absolute; opacity: 0;"><defs id="SvgjsDefs1002" /><polyline id="SvgjsPolyline1003" points="0,0" /><path id="SvgjsPath1004" d="M-1 200L-1 200C-1 200 154 200 154 200C154 200 308 200 308 200C308 200 461.99999999999994 200 461.99999999999994 200C461.99999999999994 200 616 200 616 200C616 200 770 200 770 200C770 200 770 200 770 200 " /></svg>
+</body>
+
+</html>
